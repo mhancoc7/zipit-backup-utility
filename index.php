@@ -127,6 +127,9 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
                         $(document).ready(function(){
 				$(".edit-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "15%" });
 			});
+                        $(document).ready(function(){
+				$(".update").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "25%" });
+			});
 		</script>
 
 <script>
@@ -172,7 +175,7 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 <div class="tabpage" id="tabpage_1">
         <p><br/>The Zipit Backup Utility is designed for use with Rackspace Cloud Sites&reg;.<br/><br/>Zipit is an unofficial tool built by a Racker to assist Cloud Sites&reg; customers. <br/><br/>Zipit is not an "official" Rackspace&reg; tool. <br/><br/><h3>Additional info:</h3><ul><li><a href="http://www.rackspace.com/knowledge_center/article/zipit-backup-utility" target="_blank">Knowledge Center Article <img src="images/open_in_new_window.png" /></a></li><li><a href="https://community.rackspace.com/products/f/26/t/445" target="_blank">Community Forums <img src="images/open_in_new_window.png" /></a></li><li><a href="https://github.com/jeremehancock/zipit" target="_blank">Github Page <img src="images/open_in_new_window.png" /></a></li></ul></p>
 
-<p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <a href='zipit-updater.php'>Click here to update</a>";} ?></p>
+<p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <br/><br/><a id='update' class='update' href='zipit-updater.php'><button type='button' class='css3button'>Update Now</button></a>";} ?></p>
       </div>
       <div class="tabpage" id="tabpage_2" style="display: none;">
         <h2>Available File Backups</h2>
