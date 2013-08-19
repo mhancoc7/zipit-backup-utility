@@ -25,8 +25,14 @@ curl_exec($ch);
 curl_close($ch);
 fclose($fp);
 
-
 shell_exec("php zipit-update.php");
+
+chdir("zipit");
+
+//redirect to login
+echo "<script>";
+echo "parent.location.href='index.php'";
+echo "</script>";
 
 ?>
 
