@@ -19,7 +19,9 @@ while( false !== ( $file = readdir( $dh ) ) ){
     $ext=substr($file,-4,4); 
         if(in_array( $ext, $show )){       
             $file = str_replace("-config.php", "", $file);   
-            $select .= "<option value='$file'>$file</option>\n"; 
+               if ($file != "index.php") {
+                  $select .= "<option value='$file'>$file</option>\n"; 
+               }
     } 
 }   
 
