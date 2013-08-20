@@ -220,8 +220,14 @@
       sleep(3);
       }
 
+// Change our current working directory to prepare for zipping. This avoids the path getting zipped
+   chdir("$path/zipit/zipit-backups/databases/");
+
 // execute the zip
-   shell_exec("zip -9pr $path/zipit/zipit-backups/databases/$backupname ./zipit-backups/databases/$db_name-$timestamp.sql");
+   shell_exec("zip -9pr $backupname $db_name-$timestamp.sql");
+
+// Change our current working directory back to the zipit directory
+   chdir("$path/zipit");
 
 // check to see if the backup was created
    if (file_exists("./zipit-backups/databases/$backupname")) {
