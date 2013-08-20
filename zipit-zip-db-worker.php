@@ -69,9 +69,10 @@
          if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
             continue;
          }
- 
-         if ((time() - filemtime($dir.'/'.$file)) > 86400) {
-            shell_exec("rm -rf ./zipit-backups/databases/$file");
+         if ($file != "index.php") {
+            if ((time() - filemtime($dir.'/'.$file)) > 86400) {
+               shell_exec("rm -rf ./zipit-backups/files/$file");
+            }
          }
       }
       closedir($handle);
