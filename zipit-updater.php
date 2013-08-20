@@ -21,7 +21,7 @@ $progress_file = $progress_hash. "-progress.php";
 file_put_contents("../$progress_file",'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Backing up current install...<br/><img src="images/progress.gif"/></center>');
 
 // grab the updater from Github
-shell_exec('wget https://raw.github.com/jeremehancock/zipit-updater/master/zipit-update.php --no-check-certificate -O ../zipit-update.php');
+shell_exec('wget hhttps://raw.github.com/jeremehancock/zipit-backup-utility-updater/master/zipit-update.php --no-check-certificate -O ../zipit-update.php');
 
 shell_exec("php ../zipit-update.php $progress_hash >/dev/null 2>/dev/null &");
 
