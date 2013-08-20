@@ -37,8 +37,6 @@ chdir("zipit");
 
 //redirect to login
 echo "<script>";
-echo "alert('Zipit Successfully Updated!');";
-echo "parent.location.href='index.php';";
+echo "parent.location.href='index.php'";
 echo "</script>";
-
 ?>
