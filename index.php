@@ -113,20 +113,20 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 		<script src="js/jquery.colorbox.js"></script>
 		<script>
 			$(document).ready(function(){
-				$(".backup-files").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "35%" });
+				$(".backup-files").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
 			$(document).ready(function(){
-				$(".backup-database").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "35%" });
+				$(".backup-database").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
 
                         $(document).ready(function(){
-				$(".add-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "15%" });
+				$(".add-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
 			});
                         $(document).ready(function(){
-				$(".edit-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "15%" });
+				$(".edit-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
 			});
                         $(document).ready(function(){
-				$(".update").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "35%" });
+				$(".update").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
 		</script>
 
