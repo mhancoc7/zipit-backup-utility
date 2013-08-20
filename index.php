@@ -71,9 +71,9 @@ $dir = "./zipit-backups/databases/";
 
 // generate hash to create progress file
 $progress_hash_files_continuous = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
-$progress_hash_files_daily = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
+$progress_hash_files_weekly = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
 $progress_hash_databases_continuous = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
-$progress_hash_databases_daily = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
+$progress_hash_databases_weekly = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
 
 // get installed version
 $installed_version = "zipit-version.php";
@@ -163,7 +163,7 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
         <li id="tabHeader_1">Home</li>
         <li id="tabHeader_2">Files</li>
         <li id="tabHeader_3">Databases</li>
-        <li id="tabHeader_4">Schedule</li>
+        <li id="tabHeader_4">Scheduler</li>
         <li id="tabHeader_5">Logs</li>
         <li id="tabHeader_6">Settings</li>
         <li id="tabHeader_7">Troubleshooting</li>
@@ -229,11 +229,11 @@ var val = document.db_form_schedule.db_select_schedule.value;
 
 if (val == "Select Database") {
 document.getElementById("databases_continuous").value="Select Database From Dropdown"; 
-document.getElementById("databases_daily").value="Select Database From Dropdown"; 
+document.getElementById("databases_weekly").value="Select Database From Dropdown"; 
 }
 else {
 document.getElementById("databases_continuous").value="web/content/zipit/zipit-zip-db-worker.php <?php echo $auth_hash.' '.$progress_hash_databases_continuous;?>"+val+" "+val+ " auto "; 
-document.getElementById("databases_daily").value="web/content/zipit/zipit-zip-db-worker.php <?php echo $auth_hash.' '.$progress_hash_databases_daily;?>"+val+" "+val+" auto daily"; 
+document.getElementById("databases_weekly").value="web/content/zipit/zipit-zip-db-worker.php <?php echo $auth_hash.' '.$progress_hash_databases_weekly;?>"+val+" "+val+" auto weekly"; 
 }
 
 
@@ -263,7 +263,7 @@ function updateDbMenuSchedule()
 {
         $("#db_menu_schedule").load("zipit-db-menu-schedule.php");
         document.getElementById("databases_continuous").value="Select Database From Dropdown"; 
-        document.getElementById("databases_daily").value="Select Database From Dropdown"; 
+        document.getElementById("databases_weekly").value="Select Database From Dropdown"; 
 }
 
 function SelectAll(id)
@@ -285,15 +285,15 @@ function SelectAll(id)
     </script>
       </div>
       <div class="tabpage" id="tabpage_4" style="display: none;">
-        <h2>Schedule</h2>
+        <h2>Scheduler</h2>
 You can easily automate Zipit via a Scheduled Task (cronjob) via the Cloud Sites Control Panel. <br/><br/>
 
 Below you will find the "Commands" to use for the Scheduled Task (cronjob).<br/><br/> Be sure to set the "Command Language" to php!  <br/><br/>For more info on setting up a Scheduled Task (cronjob) in Cloud Sites click <a href="http://www.rackspace.com/knowledge_center/article/how-do-i-schedule-a-cron-job-for-cloud-sites" target="_blank">here <img src='images/open_in_new_window.png' /></a>.<br/><br/>
 <div id="div1" class="alldivs"> <p><h4>Files Options:</h4><br/>Continuous:<img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation." /><br/><input class="files_continuous" name="files_continuous" type="text" id="files_continuous" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?> auto" readonly onClick="SelectAll('files_continuous');"><br/><br/>
-Daily Rotation:<img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="files_daily" name="files_daily" type="text" id="files_daily" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_daily;?> auto daily" readonly onClick="SelectAll('files_daily');"></div>
+Weekly Rotation:<img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="files_weekly" name="files_weekly" type="text" id="files_weekly" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_weekly;?> auto weekly" readonly onClick="SelectAll('files_weekly');"></div>
 
 <div id="div2" class="alldivs"> <p><div id="db_menu_schedule" class="db_menu_schedule"><!-- database menu loads here --></div><h4>Database Options:</h4><br/>Continuous:<img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation." /><br/><input class="databases_continuous" name="databases_continuous" type="text" id="databases_continuous" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_continuous');"><br/><br/>
-Daily Rotation:<img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="databases_daily" name="databases_daily" type="text" id="databases_daily" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_daily');"></div>
+Weekly Rotation:<img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="databases_weekly" name="databases_weekly" type="text" id="databases_weekly" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_weekly');"></div>
 </p>
       </div>
       <div class="tabpage" id="tabpage_5" style="display: none;">
@@ -362,7 +362,7 @@ active: false
     <div class="cause_fix">Cause:</div>
     <p>This error indicates that the "Auth Hash" that was used to run Zipit did not match the value within the Zipit configuration. This error is commonly seen if the Scheduled Task option is setup with the wrong "Auth Hash". </p><br/>
 <div class="cause_fix">Solution:</div>
-<p>Be sure that you use the exact command for the Scheduled Task that is found on the Schedule tab. You can set the "Auth Hash" on the Settings tab.</p>
+<p>Be sure that you use the exact command for the Scheduled Task that is found on the Scheduler tab. You can set the "Auth Hash" on the Settings tab.</p>
   </div>
   <h3>Can't Write to Log!</h3>
   <div>

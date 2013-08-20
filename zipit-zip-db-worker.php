@@ -37,7 +37,7 @@
     $auto_path = getcwd();
 
 // If set to rotate set date for backup name
-   if ($rotate == "daily") {
+   if ($rotate == "weekly") {
       $date = date("D");
    }
 
