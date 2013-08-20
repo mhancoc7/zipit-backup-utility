@@ -74,15 +74,13 @@ $progress_hash_files_daily = substr(hash("sha512",rand()),0,12); // Reduces the 
 $progress_hash_databases_continuous = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
 $progress_hash_databases_daily = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
 
-// get installed installed version
+// get installed version
 $installed_version = "zipit-version.php";
 $fh = fopen($installed_version, 'r');
 $display_version = fread($fh, 5);
 fclose($fh);
 
 // check for new version
-
-// Check for newer versions of script
 function file_get_data($url) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -175,7 +173,7 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 <div class="tabpage" id="tabpage_1">
         <p><br/>The Zipit Backup Utility is designed for use with Rackspace Cloud Sites&reg;.<br/><br/>Zipit is an unofficial tool built by a Racker to assist Cloud Sites&reg; customers. <br/><br/>Zipit is not an "official" Rackspace&reg; tool. <br/><br/><h3>Additional info:</h3><ul><li><a href="http://www.rackspace.com/knowledge_center/article/zipit-backup-utility" target="_blank">Knowledge Center Article <img src="images/open_in_new_window.png" /></a></li><li><a href="https://community.rackspace.com/products/f/26/t/445" target="_blank">Community Forums <img src="images/open_in_new_window.png" /></a></li><li><a href="https://github.com/jeremehancock/zipit" target="_blank">Github Page <img src="images/open_in_new_window.png" /></a></li></ul></p>
 
-<p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <br/><br/><a id='update' class='update' href='zipit-updater.php'><button type='button' class='css3button'>Update Now</button></a>";} ?></p>
+<p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <br/><br/><a id='update' class='update' href='zipit-updater.php'><button type='button' class='css3button'>Update Now</button></a>";} ?><br/><br/><em><font color="red">Your current version will backed up in a time-stamped folder to preserve any modifications that you may have made. It is safe to remove the backed up version once the update is complete.</font></em></p>
       </div>
       <div class="tabpage" id="tabpage_2" style="display: none;">
         <h2>Available File Backups</h2>
