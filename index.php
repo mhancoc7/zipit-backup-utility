@@ -374,7 +374,7 @@ active: false
 </div>
       </div>
     </div>
-<div class="dev_by" id="dev_by">Developed by: <a href="http://www.cloudsitesrock.com/" target="_blank">Jereme Hancock</a></div>
+<div class="dev_by" id="dev_by">Developed by: <a href="https://github.com/jeremehancock" target="_blank">Jereme Hancock</a></div>
   </div>
 </div>
 
