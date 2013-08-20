@@ -126,7 +126,7 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 				$(".edit-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "15%" });
 			});
                         $(document).ready(function(){
-				$(".update").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "35%" });
+				$(".update").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "25%" });
 			});
 		</script>
 
