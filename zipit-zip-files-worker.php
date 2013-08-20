@@ -136,7 +136,7 @@
    chdir("../../");
 
 // execute the zip
-   shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web");
+   shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web -x ./web/content/zipit\*");
 
 // Change our current working directory back to the zipit directory
    chdir("$path/zipit");
