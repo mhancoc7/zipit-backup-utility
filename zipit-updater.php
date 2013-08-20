@@ -20,6 +20,9 @@ $progress_file = $progress_hash. "-progress.php";
 
 file_put_contents("../$progress_file",'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Initializing...<br/><img src="images/progress.gif"/></center>');
 
+// sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened.
+   sleep(3);
+
 // grab the updater from Github
 shell_exec('wget https://raw.github.com/jeremehancock/zipit-backup-utility-updater/master/zipit-update.php --no-check-certificate -O ../zipit-update.php');
 
