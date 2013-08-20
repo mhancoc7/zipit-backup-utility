@@ -113,10 +113,10 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 		<script src="js/jquery.colorbox.js"></script>
 		<script>
 			$(document).ready(function(){
-				$(".backup-files").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "25%" });
+				$(".backup-files").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "35%" });
 			});
 			$(document).ready(function(){
-				$(".backup-database").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "25%" });
+				$(".backup-database").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "35%" });
 			});
 
                         $(document).ready(function(){
