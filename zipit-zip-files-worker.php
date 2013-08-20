@@ -28,6 +28,9 @@
 // Set the default timezone
    date_default_timezone_set('America/Chicago');
 
+// define backup path for auto
+    $auto_path = getcwd();
+
 // If set to rotate set date for backup name
    if ($rotate == "daily") {
       $date = date("D");
@@ -41,8 +44,14 @@
    $backupname = "$url-backup-$date.zip";
 
 // define zipit log file
+   if ($auto_check == "auto") {
+    $zipitlog = "$auto_path/logs/zipit.log";
+    $logsize = filesize($zipitlog);
+   }
+   else {
     $zipitlog = "../../../logs/zipit.log";
     $logsize = filesize($zipitlog);
+   }
 
 // create zipit log file if it doesn't exist
     if(!file_exists("$zipitlog")) { 
@@ -53,11 +62,16 @@
 
 // rotate log file to keep it from growing too large
    if ($logsize > 52428800) {
+   if ($auto_check == "auto") {
+   shell_exec("mv $auto_path/logs/zipit.$auto_path/logs/zipit_old.log");
+   }
+   else {
    shell_exec("mv ../../../logs/zipit.log ../../../logs/zipit_old.log");
+   }
    }
 
 // clean up local backups if files are older than 24 hours (86400 seconds)
-   $dir = "./zipit-backups/files/";
+   $dir = "$path/zipit/zipit-backups/files/";
  
    if ($handle = opendir($dir)) {
       while (( $file = readdir($handle)) !== false ) {
@@ -66,7 +80,7 @@
          }
          if ($file != "index.php") {
             if ((time() - filemtime($dir.'/'.$file)) > 86400) {
-               shell_exec("rm -rf ./zipit-backups/files/$file");
+               shell_exec("rm -rf $path/zipit/zipit-backups/files/$file");
             }
          }
       }
@@ -139,10 +153,15 @@
    shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web -x ./web/content/zipit\*");
 
 // Change our current working directory back to the zipit directory
-   chdir("$path/zipit");
+   if ($auto_check == "auto") {
+      chdir("$auto_path");
+   }
+   else {
+      chdir("$path/zipit");
+   }
 
 // check to see if the backup was created
-   if (file_exists("./zipit-backups/files/$backupname")) {
+   if (file_exists("$path/zipit/zipit-backups/files/$backupname")) {
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
@@ -176,20 +195,20 @@
       }
 
 // clean up local backups, progress file, and end process
-   shell_exec("rm ./zipit-backups/files/$backupname");
+   shell_exec("rm $path/zipit/zipit-backups/files/$backupname");
    shell_exec("rm $progress_file");
    die();
    }
 
 // md5 for local backup. this is used for integrity check once backup has been moved to Cloud Files
-   $md5file = "./zipit-backups/files/$backupname";
+   $md5file = "$path/zipit/zipit-backups/files/$backupname";
    $md5 = md5_file($md5file);
 
 // Set API Timeout
    define('RAXSDK_TIMEOUT', '3600');
 
 // require Cloud Files API
-   require_once('./api/lib/rackspace.php');
+   require_once("$path/zipit/api/lib/rackspace.php");
 
 // Authenticate to Cloud Files
 
@@ -254,7 +273,7 @@
       }
 
 // clean up local backups, progress file, and end process
-      shell_exec("rm ./zipit-backups/files/$backupname");
+      shell_exec("rm $path/zipit/zipit-backups/files/$backupname");
       shell_exec("rm $progress_file");
       die();
    }
@@ -312,7 +331,7 @@
 
 // send backup to Cloud Files
    $obj = $cont->DataObject();
-   $obj->Create(array('name' => "$backupname", 'content_type' => 'application/x-gzip'), $filename="./zipit-backups/files/$backupname");
+   $obj->Create(array('name' => "$backupname", 'content_type' => 'application/x-gzip'), $filename="$path/zipit/zipit-backups/files/$backupname");
 
 // get etag(md5). This is used for integrity check
    $etag = $obj->hash;
@@ -342,7 +361,7 @@
       }
 
 // clean up local backups, progress file, and end process
-      shell_exec("rm ./zipit-backups/files/$backupname");
+      shell_exec("rm $path/zipit/zipit-backups/files/$backupname");
       shell_exec("rm $progress_file");
       die();  
    }
@@ -366,7 +385,7 @@
       }
 
 // clean up local backups and progress file
-   shell_exec("rm ./zipit-backups/files/$backupname"); 
+   shell_exec("rm $path/zipit/zipit-backups/files/$backupname"); 
    shell_exec("rm $progress_file");
 }
 
