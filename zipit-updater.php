@@ -18,15 +18,10 @@ $progress_hash = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 c
 // get name of progress file. This will keep on demand backups from colliding with auto backups
 $progress_file = $progress_hash. "-progress.php";
 
-file_put_contents("../$progress_file",'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Initializing...<br/><img src="images/progress.gif"/></center>');
-
-// sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened.
-   sleep(3);
+file_put_contents("../$progress_file",'<br/><center>Initializing1...<br/><img src="images/progress.gif"/></center>');
 
 // grab the updater from Github
 shell_exec('wget https://raw.github.com/jeremehancock/zipit-backup-utility-updater/master/zipit-update.php --no-check-certificate -O ../zipit-update.php');
-
-shell_exec("php ../zipit-update.php $progress_hash >/dev/null 2>/dev/null &");
 
 ?>
 
@@ -50,4 +45,33 @@ shell_exec("php ../zipit-update.php $progress_hash >/dev/null 2>/dev/null &");
     setInterval('checkForData()',1000); // 3 Second Intervals
   });
 </script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+  function checkForData ( ) {
+    $.get('<?php echo "../".$progress_file; ?>',false,function(data){
+      if(data.length){
+        // Display the current progress
+        document.getElementById('progress').innerHTML = data;
+      }else{
+        // No need to show anything if there isn't anything happening
+      }
+    });
+  }
+  // Start the timer when the page is done loading:
+  $(function(){
+    // First Check 
+    checkForData();
+// Start Timer
+    var refreshIntervalId = setInterval('checkForData()',1000); // 1 Second Intervals
+
+$.get('zipit-updater-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>', function(data) {
+  $('.result').text(data);
+clearInterval(refreshIntervalId);
+
+});
+
+  });
+</script>
+<link href="css/iframe_style.css" rel="stylesheet" type="text/css">
 <span id="progress"></span>
