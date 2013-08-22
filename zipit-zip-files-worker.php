@@ -71,7 +71,7 @@
    }
 
 // clean up local backups if files are older than 24 hours (86400 seconds)
-   $dir = "$path/zipit/zipit-backups/files/";
+   $dir = "$path/zipit/zipit-backups/files";
  
    if ($handle = opendir($dir)) {
       while (( $file = readdir($handle)) !== false ) {
@@ -86,6 +86,25 @@
       }
       closedir($handle);
    }
+
+// clean up backup progress files older than 24 hours (86400 seconds)
+$dir = "$path/zipit";
+ 
+    if ($handle = opendir($dir)) {
+    while (( $file = readdir($handle)) !== false ) {
+        if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
+            continue;
+        }
+ 
+        if(substr($file,-13) == "-progress.php") {
+            if ((time() - filemtime($dir.'/'.$file)) > 86400) {
+               shell_exec("rm $dir/$file");
+            }
+         }
+    }
+    closedir($handle);
+
+}
 
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");

@@ -35,7 +35,6 @@ shell_exec("mv ../../../logs/zipit.log ../../../logs/zipit_old.log");
 // clean up local file backups if files are older than 24 hours (86400 seconds)
 $dir = "./zipit-backups/files/";
  
- 
     if ($handle = opendir($dir)) {
     while (( $file = readdir($handle)) !== false ) {
         if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
@@ -54,7 +53,6 @@ $dir = "./zipit-backups/files/";
 // clean up local database backups if files are older than 24 hours (86400 seconds)
 $dir = "./zipit-backups/databases/";
  
- 
     if ($handle = opendir($dir)) {
     while (( $file = readdir($handle)) !== false ) {
         if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
@@ -70,6 +68,45 @@ $dir = "./zipit-backups/databases/";
     closedir($handle);
 
 }
+
+// clean up backup progress files older than 24 hours (86400 seconds)
+$dir = ".";
+ 
+    if ($handle = opendir($dir)) {
+    while (( $file = readdir($handle)) !== false ) {
+        if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
+            continue;
+        }
+ 
+        if(substr($file,-13) == "-progress.php") {
+            if ((time() - filemtime($dir.'/'.$file)) > 86400) {
+               shell_exec("rm $dir/$file");
+            }
+         }
+    }
+    closedir($handle);
+
+}
+
+// clean up updater progress files older than 24 hours (86400 seconds)
+$dir = "..";
+ 
+    if ($handle = opendir($dir)) {
+    while (( $file = readdir($handle)) !== false ) {
+        if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
+            continue;
+        }
+ 
+        if(substr($file,-13) == "-progress.php") {
+            if ((time() - filemtime($dir.'/'.$file)) > 86400) {
+               shell_exec("rm $dir/$file");
+            }
+         }
+    }
+    closedir($handle);
+
+}
+
 
 // generate hash to create progress file
 $progress_hash_files_continuous = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
