@@ -28,4 +28,7 @@ $path = "";
 // Zipit Auth Hash
 $auth_hash = "";
 
+// Usage Feedback
+$usage_feedback = "";
+
 ?>

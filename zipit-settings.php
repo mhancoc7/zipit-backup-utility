@@ -18,6 +18,14 @@
 // remove the zipit directory from path since we are running in the zipit directory
     $path = str_replace("/zipit", "", $path);
 
+// get value of usage feedback
+if ($usage_feedback == "allow") {
+$checked = "checked";
+}
+else {
+$checked = "";
+}
+
 if (isset($_POST["Submit"])) {
 
 if ($zipituser == $_POST["zipituser"] || $password == $_POST["password"]) {
@@ -56,6 +64,9 @@ $path = "'. $_POST["path"]. '";
 
 // Zipit Auth Hash
 $auth_hash = "'. $_POST["auth_hash"]. '";
+
+// Usage Feedback
+$usage_feedback = "'. $_POST["usage"]. '";
 
 ?>';
 
@@ -171,6 +182,13 @@ function removeSpaces(string) {
 <p>
     Auth Hash:<br />
     <input name="auth_hash" type="text" id="auth_hash" value="<?php echo $auth_hash ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This unique code is used for the Automated settings. Changing this will affect any previously configured Scheduled Tasks (cronjobs). Alphanumeric characters only!" />
+</p>
+
+<br />
+<hr />
+<br />
+<p>
+    <input type="checkbox" name="usage" id="usage" value="allow" <?php echo $checked ?> />Help make Zipit better by providing usage feedback. <a href="http://statcounter.com/about/cookies/" target="_blank">More info... <img src="https://raw.github.com/jeremehancock/zipit-backup-utility/master/images/open_in_new_window.png"/></a>
 </p>
 
 <p>

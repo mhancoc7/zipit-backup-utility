@@ -418,5 +418,10 @@ active: false
 </div>
 
 <script src="js/tabs.js"></script>
+<?php
+if ($usage_feedback == "allow") {
+include("zipit-usage-feedback.php");
+}
+?>
 </body>
 </html>
