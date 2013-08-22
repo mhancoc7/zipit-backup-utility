@@ -21,16 +21,14 @@ $progress_hash = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 c
 // get name of progress file. This will keep on demand backups from colliding with auto backups
 $progress_file = $progress_hash. "-progress.php";
 
-file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Initializing...<br/><img src="images/progress.gif"/></center>');
-
-shell_exec("php zipit-zip-db-worker.php $auth_hash $progress_hash $db >/dev/null 2>/dev/null &");
+file_put_contents($progress_file,'<br/><center>Initializing...<br/><img src="images/progress.gif"/></center>');
 
 ?>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
   function checkForData ( ) {
-    jQuery.get('<?php echo $progress_file; ?>',false,function(data){
+    $.get('<?php echo $progress_file; ?>',false,function(data){
       if(data.length){
         // Display the current progress
         document.getElementById('progress').innerHTML = data;
@@ -43,8 +41,16 @@ shell_exec("php zipit-zip-db-worker.php $auth_hash $progress_hash $db >/dev/null
   $(function(){
     // First Check 
     checkForData();
-    // Start Timer
-    setInterval('checkForData()',1000); // 3 Second Intervals
+// Start Timer
+    var refreshIntervalId = setInterval('checkForData()',1000); // 1 Second Intervals
+
+$.get('zipit-zip-db-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>&db=<?php echo $db; ?>', function(data) {
+  $('.result').text(data);
+clearInterval(refreshIntervalId);
+
+});
+
   });
 </script>
+<link href="css/iframe_style.css" rel="stylesheet" type="text/css">
 <span id="progress"></span>

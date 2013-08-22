@@ -319,10 +319,12 @@ padding-top:10px;
 
 #files_continuous {
 width:300px;
+        margin-right:25px;
 }
 
 #files_weekly {
 width:300px;
+        margin-right:25px;
 }
 
 #databases_continuous {
@@ -335,7 +337,6 @@ width:300px;
 
     .alldivs {
         display: inline-block;
-        padding-right:20px;
     }
 
 .cause_fix {

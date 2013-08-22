@@ -94,13 +94,13 @@
 
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
-   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
    $stringData = "$logtimestamp Zipit started\n$logtimestamp -- Authorizing\n";
    fwrite($fh, $stringData);
    fclose($fh);
 
 // update progress file
-   file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Authorizing...<br/><img src="images/progress.gif"/></center>');
+   file_put_contents($progress_file,'<br/><center>Authorizing...<br/><img src="images/progress.gif"/></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened.
    sleep(3);
@@ -114,7 +114,7 @@
    else {
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Authorization Failed!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -124,7 +124,7 @@
       } 
      
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Authorization Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Authorization Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -139,12 +139,12 @@
    else {
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Dumping Database!\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
-      file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Dumping Database...<br/><img src="images/progress.gif"/></center>');
+      file_put_contents($progress_file,'<br/><center>Dumping Database...<br/><img src="images/progress.gif"/></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
       sleep(3);
@@ -156,7 +156,7 @@
         if (!$link) {
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Database Connection Failed!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -166,7 +166,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Database Connection Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Database Connection Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -183,7 +183,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Database Connection Failed!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -193,7 +193,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Database Connection Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Database Connection Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -215,7 +215,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Zipping!\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -226,7 +226,7 @@
 
       else {
 
-      file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Zipping...<br/><img src="images/progress.gif"/></center>');
+      file_put_contents($progress_file,'<br/><center>Zipping...<br/><img src="images/progress.gif"/></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
       sleep(3);
@@ -251,7 +251,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Zipping Complete!\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -264,7 +264,7 @@
    else {
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Zip Failed!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -274,7 +274,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Zip Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Zip Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -291,7 +291,7 @@
    else {
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Database Connection Failed!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -301,7 +301,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Database Connection Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Database Connection Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -327,7 +327,7 @@
 
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
-   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
    $stringData = "$logtimestamp -- Connecting to Cloud Files\n";
    fwrite($fh, $stringData);
    fclose($fh);
@@ -337,7 +337,7 @@
     }
 
     else {
-       file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Connecting to Cloud Files...<br/><img src="images/progress.gif"/></center>');
+       file_put_contents($progress_file,'<br/><center>Connecting to Cloud Files...<br/><img src="images/progress.gif"/></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
     sleep(3);
@@ -349,7 +349,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Connected to Cloud Files\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -369,7 +369,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Cloud Files API connection could not be established!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -379,7 +379,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Cloud Files API Connection Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Cloud Files API Connection Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -394,7 +394,7 @@
 
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
-   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
    $stringData = "$logtimestamp -- Creating Cloud Files Container.\n";
    fwrite($fh, $stringData);
    fclose($fh);
@@ -404,7 +404,7 @@
    }
 
    else {
-      file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Creating Cloud Files Container...<br/><img src="images/progress.gif"/></center>'); 
+      file_put_contents($progress_file,'<br/><center>Creating Cloud Files Container...<br/><img src="images/progress.gif"/></center>'); 
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
    sleep(3); 
@@ -416,7 +416,7 @@
 
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
-   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
    $stringData = "$logtimestamp -- Cloud Files container created or already exists!\n";
    fwrite($fh, $stringData);
    fclose($fh);
@@ -427,7 +427,7 @@
   
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
-   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+   $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
    $stringData = "$logtimestamp -- Moving backup to Cloud Files\n";
    fwrite($fh, $stringData);
    fclose($fh);
@@ -437,7 +437,7 @@
    }
 
    else {
-   file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center>Moving Backup to Cloud Files...<br/><img src="images/progress.gif"/></center>');
+   file_put_contents($progress_file,'<br/><center>Moving Backup to Cloud Files...<br/><img src="images/progress.gif"/></center>');
  
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
    sleep(3); 
@@ -458,7 +458,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Backup failed integrity check! Please try again.\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -468,7 +468,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Backup Failed Integrity Check! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Backup Failed Integrity Check! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
       sleep(3);
@@ -485,7 +485,7 @@
 
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
-      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
+      $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
       $stringData = "$logtimestamp -- Backup Complete!\n$logtimestamp Zipit completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
@@ -495,7 +495,7 @@
       }
 
       else {
-         file_put_contents($progress_file,'<link href="css/iframe_style.css" rel="stylesheet" type="text/css"><br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Backup Complete! Click to Close</button></center>');  
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Backup Complete! Click to Close</button></center>');  
       sleep(3);
       }
 
