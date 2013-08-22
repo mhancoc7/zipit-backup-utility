@@ -68,7 +68,7 @@
 // rotate log file to keep it from growing too large
    if ($logsize > 52428800) {
    if ($auto_check == "auto") {
-   shell_exec("mv $auto_path/logs/zipit.$auto_path/logs/zipit_old.log");
+   shell_exec("mv $auto_path/logs/zipit.log $auto_path/logs/zipit_old.log");
    }
    else {
    shell_exec("mv ../../../logs/zipit.log ../../../logs/zipit_old.log");
@@ -85,7 +85,7 @@
          }
          if ($file != "index.php") {
             if ((time() - filemtime($dir.'/'.$file)) > 86400) {
-               shell_exec("rm -rf $path/zipit/zipit-backups/databases/$file");
+               sshell_exec("rm $dir/$file");
             }
          }
       }

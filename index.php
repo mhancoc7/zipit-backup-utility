@@ -43,7 +43,7 @@ $dir = "./zipit-backups/files/";
         }
         if ($file != "index.php") {
             if ((time() - filemtime($dir.'/'.$file)) > 86400) {
-               shell_exec("rm -rf ./zipit-backups/files/$file");
+               shell_exec("rm $dir/$file");
             }
          }
     }
@@ -63,7 +63,7 @@ $dir = "./zipit-backups/databases/";
  
         if ($file != "index.php") {
             if ((time() - filemtime($dir.'/'.$file)) > 86400) {
-               shell_exec("rm -rf ./zipit-backups/databases/$file");
+               shell_exec("rm $dir/$file");
             }
          }
     }
