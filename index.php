@@ -216,7 +216,7 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 <p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <br/><br/><a id='update' class='update' href='zipit-updater.php'><button type='button' class='css3button'>Update Now</button></a><br/><br/><em><font color='red'>Your current version will backed up in a time-stamped folder to preserve any modifications that you may have made. It is safe to remove the backed up version once the update is complete.</font></em>";} ?></p>
       </div>
       <div class="tabpage" id="tabpage_2" style="display: none;">
-        <h2>Available File Backups</h2>
+        <h2>Available File Backups <img src="images/hint.png" title="This is the list of file backups that you have available in your Cloud Files account created by Zipit. Use the link below the list to manage these backups." /></h2>
 <center><iframe src="zipit-view-files.php" class="files_frame" frameborder="0" scrolling="auto" name="files-list"></iframe><br/><br/></center>
 <?php 
 echo "<center>You can manage your backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-files-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>";	
@@ -235,7 +235,7 @@ echo "</center></em><br/>";
     </script>
       </div>
       <div class="tabpage" id="tabpage_3" style="display: none;">
-        <h2>Available Database Backups</h2>
+        <h2>Available Database Backups <img src="images/hint.png" title="This is the list of database backups that you have available in your Cloud Files account created by Zipit. Use the link below the list to manage these backups." /></h2>
 
 <center><iframe src="zipit-view-db.php" class="dbs_frame" frameborder="0" scrolling="auto" name="db-list"></iframe><br/><br/></center>
 <?php 
@@ -367,7 +367,7 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
       </div>
       <div class="tabpage" id="tabpage_6" style="display: none;">
         <h2>Settings</h2>
-        <center><iframe src="zipit-settings.php" class="settings_frame" frameborder="0" scrolling="no" name="settings"></iframe><br/><br/></center>
+        <center><br/><br/><iframe src="zipit-settings.php" class="settings_frame" frameborder="0" scrolling="no" name="settings"></iframe><br/><br/></center>
       </div>
 <div class="tabpage" id="tabpage_7" style="display: none;">
         <h2>Troubleshooting</h2>
