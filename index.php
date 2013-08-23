@@ -155,6 +155,7 @@ background: url(images/background.jpg) no-repeat center center fixed;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+background-color:#7397a7;
 }
 </style>
 		<script src="js/jquery.js"></script>
