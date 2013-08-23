@@ -279,7 +279,7 @@ padding-top:10px;
 
 .dev_by {
 color: #708090;
-text-align:center;
+text-align:right;
 padding-top:10px;
 }
 
@@ -288,6 +288,13 @@ padding-top:10px;
 	color:#FFF;
 	text-decoration:none;
         font-size:16px;
+}
+
+
+.version_info {
+color: #6D6D6D;
+display:inline;
+font-size:.5em;
 }
 
 /* Styles for Tooltips */
