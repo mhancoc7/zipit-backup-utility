@@ -167,7 +167,7 @@ shell_exec("rm ./dbs/$db_file");
 <head>
 		<script src="js/jquery.js"></script>
 <link rel="stylesheet" href="css/jquery-ui.css" />
-<link href="css/iframe_style.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 
 <script language="javascript" type="text/javascript">
 function removeSpaces(string) {

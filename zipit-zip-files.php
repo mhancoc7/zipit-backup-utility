@@ -49,5 +49,5 @@ clearInterval(refreshIntervalId);
 
   });
 </script>
-<link href="css/iframe_style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <span id="progress"></span>

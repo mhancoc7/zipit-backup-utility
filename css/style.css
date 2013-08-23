@@ -5,7 +5,6 @@
 
 body {
 	font: 1em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-        background:#ccc;
 }
 
 h2{ 
@@ -145,6 +144,7 @@ button.css3button {
             padding-right:8px;
 }
 
+
 .logs {
     -moz-border-radius-topleft: 5px; 
     border-top-left-radius: 5px;
@@ -270,6 +270,7 @@ input[type=checkbox] {
             top:3px;  
 } 
 
+
 #logout {
 position:relative;
 float:right;
@@ -278,7 +279,7 @@ padding-top:10px;
 
 .dev_by {
 color: #708090;
-text-align:right;
+text-align:center;
 padding-top:10px;
 }
 
@@ -287,12 +288,6 @@ padding-top:10px;
 	color:#FFF;
 	text-decoration:none;
         font-size:16px;
-}
-
-.version_info {
-color: #6D6D6D;
-display:inline;
-font-size:.5em;
 }
 
 /* Styles for Tooltips */

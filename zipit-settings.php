@@ -98,7 +98,7 @@ echo '</script>';
 <head>
 
 <link rel="stylesheet" href="css/zipit/jquery-ui.css" />
-<link href="css/iframe_style.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 function SelectAll(id)

@@ -147,6 +147,12 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 <link rel="stylesheet" href="css/colorbox.css" />
 <link rel="stylesheet" href="css/zipit/jquery-ui.css" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
+
+<style>
+body {
+        background:#ccc;
+}
+</style>
 		<script src="js/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
 

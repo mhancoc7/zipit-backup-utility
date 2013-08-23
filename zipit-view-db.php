@@ -9,7 +9,7 @@
 // specify namespace
    namespace OpenCloud;
 
-echo "<link href='css/iframe_style.css' rel='stylesheet' type='text/css'><div class='logs'>";
+echo "<link href='css/style.css' rel='stylesheet' type='text/css'><div class='logs'>";
 
 // include password protection
     require("zipit-login.php"); 

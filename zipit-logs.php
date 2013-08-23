@@ -28,7 +28,7 @@ shell_exec("mv ../../../logs/zipit.log ../../../logs/zipit_old.log");
 
 ?>
 
-<link href="css/iframe_style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <div class="logs">
 <?php
    // Include & Call Class 
