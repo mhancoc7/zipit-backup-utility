@@ -277,8 +277,8 @@ function display_Schedule() {
 var val = document.db_form_schedule.db_select_schedule.value; 
 
 if (val == "Select Database to Backup") {
-document.getElementById("databases_continuous").value="Select Database From Dropdown"; 
-document.getElementById("databases_weekly").value="Select Database From Dropdown"; 
+document.getElementById("databases_continuous").value="No Database Selected"; 
+document.getElementById("databases_weekly").value="No Database Selected"; 
 }
 else {
 document.getElementById("databases_continuous").value="web/content/zipit/zipit-zip-db-worker.php <?php echo $auth_hash.' '.$progress_hash_databases_continuous;?>"+val+" "+val+ " auto "; 
@@ -311,8 +311,8 @@ function updateDbMenu()
 function updateDbMenuSchedule()
 {
         $("#db_menu_schedule").load("zipit-db-menu-schedule.php");
-        document.getElementById("databases_continuous").value="Select Database From Dropdown"; 
-        document.getElementById("databases_weekly").value="Select Database From Dropdown"; 
+        document.getElementById("databases_continuous").value="No Database Selected"; 
+        document.getElementById("databases_weekly").value="No Database Selected"; 
 }
 
 function SelectAll(id)
@@ -341,8 +341,8 @@ Below you will find the "Commands" to use for the Scheduled Task (cronjob).<br/>
 <div id="div1" class="alldivs"> <p><h4>Files Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="files_continuous" name="files_continuous" type="text" id="files_continuous" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?> auto" readonly onClick="SelectAll('files_continuous');"><br/><br/>
 Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. This will give you a maximum of 7 days of backups for your files. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="files_weekly" name="files_weekly" type="text" id="files_weekly" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_weekly;?> auto weekly" readonly onClick="SelectAll('files_weekly');"></div>
 
-<div id="div2" class="alldivs"> <p><div id="db_menu_schedule" class="db_menu_schedule"><!-- database menu loads here --></div><h4>Database Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="databases_continuous" name="databases_continuous" type="text" id="databases_continuous" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_continuous');"><br/><br/>
-Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. This will give you a maximum of 7 days of backups for your database. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="databases_weekly" name="databases_weekly" type="text" id="databases_weekly" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_weekly');"></div>
+<div id="div2" class="alldivs"> <p><div id="db_menu_schedule" class="db_menu_schedule"><!-- database menu loads here --></div><h4>Database Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="databases_continuous" name="databases_continuous" type="text" id="databases_continuous" value="No Database Selected" readonly onClick="SelectAll('databases_continuous');"><br/><br/>
+Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. This will give you a maximum of 7 days of backups for your database. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="databases_weekly" name="databases_weekly" type="text" id="databases_weekly" value="No Database Selected" readonly onClick="SelectAll('databases_weekly');"></div>
 </p>
       </div>
       <div class="tabpage" id="tabpage_5" style="display: none;">

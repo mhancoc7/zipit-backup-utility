@@ -9,8 +9,8 @@
 // include password protection
     require("zipit-login.php"); 
 
-$db_dir = "./dbs"; //change this if the script is in a different dir that the files you want 
-$show = array( '.php'); //Type of files to show 
+$db_dir = "./dbs"; 
+$show = array( '.php'); 
 
 $select = "<center><form name = \"db_form\"><select name=\"db_select\" onchange = \"showBackupButton();update(this);\"><option value='Select Database to Backup'>Select Database to Backup</option>\n"; 
 
@@ -28,5 +28,28 @@ while( false !== ( $file = readdir( $dh ) ) ){
 $select .= "</select><a href='#' class='update_db_menu' id='update_db_menu' onclick='updateDbMenu();' style='margin-left:10px;position:relative;top:5px;' title='Refresh Database Menu'><img src='images/refresh.png'/></a></form></center><br/>"; 
 closedir( $dh ); 
 
+
+   
+
+if($dh = opendir($db_dir)){           
+
+	while(($file = readdir($dh)) !== false){
+
+		if($file != "." && $file != ".." && $file != "index.php"){
+			$file_list[] = $file;  
+		}
+
+
+	}
+
+	closedir($dh);      
+}
+
+if(isset($file_list)){
 echo "$select"; 
+} else {
+    echo "<center>Use the \"Add Credentials\" button below to add your database connection information.</center><br/>";
+
+}
+
 ?>

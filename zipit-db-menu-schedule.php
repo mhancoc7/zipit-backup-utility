@@ -28,5 +28,25 @@ while( false !== ( $file = readdir( $dh ) ) ){
 $select .= "</select><a href='#' class='update_db_menu_schedule' id='update_db_menu_schedule' onclick='updateDbMenuSchedule();' style='margin-left:10px;position:relative;top:5px;' title='Refresh Database Menu'><img src='images/refresh.png'/></a></form><br/>"; 
 closedir( $dh ); 
 
+if($dh = opendir($db_dir)){           
+
+	while(($file = readdir($dh)) !== false){
+
+		if($file != "." && $file != ".." && $file != "index.php"){
+			$file_list[] = $file;  
+		}
+
+
+	}
+
+	closedir($dh);      
+}
+
+if(isset($file_list)){
 echo "$select"; 
+} else {
+
+    echo "<font color='red'>Add credentials on the Databases tab!</font><br/><br/>";
+
+}
 ?>
