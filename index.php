@@ -402,9 +402,9 @@ active: false
   <h3>Backup Failed Integrity Check!</h3>
   <div>
     <div class="cause_fix">Cause:</div>
-    <p>This error indicates that the backup was moved to Cloud Files®,however, the integrity check on the backup failed. This generally indicates that the backup was corrupted during transfer. This can be caused by various factors.</p><br/>
+    <p>This error indicates that the backup was moved to Cloud Files®,however, the integrity check on the backup failed. This generally indicates that the backup was corrupted during transfer. This can be caused by various network factors.</p><br/>
 <div class="cause_fix">Solution:</div>
-<p>Be sure that you have a good internet connection and try again.</p>
+<p>Check your internet connection and try again.</p>
   </div>
   <h3>Authorization Failed!</h3>
   <div>
