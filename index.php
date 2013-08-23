@@ -150,7 +150,11 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 
 <style>
 body {
-        background:#ccc;
+background: url(images/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 </style>
 		<script src="js/jquery.js"></script>

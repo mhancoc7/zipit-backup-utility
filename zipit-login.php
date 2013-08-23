@@ -45,7 +45,11 @@ function showLoginPasswordProtect($error_msg) {
 
 <style>
 body {
-        background:#ccc;
+background: url(images/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 </style>
 		<script src="js/jquery.js"></script>
