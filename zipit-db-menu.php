@@ -12,7 +12,7 @@
 $db_dir = "./dbs"; //change this if the script is in a different dir that the files you want 
 $show = array( '.php'); //Type of files to show 
 
-$select = "<center><form name = \"db_form\"><select name=\"db_select\" onchange = \"showBackupButton();update(this);\"><option value='Select Database'>Select Database</option>\n"; 
+$select = "<center><form name = \"db_form\"><select name=\"db_select\" onchange = \"showBackupButton();update(this);\"><option value='Select Database to Backup'>Select Database to Backup</option>\n"; 
 
 $dh = @opendir( $db_dir ); 
 while( false !== ( $file = readdir( $dh ) ) ){ 

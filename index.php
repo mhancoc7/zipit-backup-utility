@@ -211,13 +211,13 @@ body {
         <li id="tabHeader_4">Scheduler</li>
         <li id="tabHeader_5">Logs</li>
         <li id="tabHeader_6">Settings</li>
-        <li id="tabHeader_7">Troubleshooting</li>
+        <li id="tabHeader_7">Troubleshooting Tips</li>
       </ul>
     </div>
     <div id="tabscontent">
 
 <div class="tabpage" id="tabpage_1">
-        <p><br/>The Zipit Backup Utility is designed for use with Rackspace Cloud Sites&reg;.<br/><br/>Zipit is an unofficial tool built by a Racker to assist Cloud Sites&reg; customers. <br/><br/>Zipit is not an "official" Rackspace&reg; tool. <br/><br/><h3>Additional info:</h3><ul><li><a href="http://www.rackspace.com/knowledge_center/article/zipit-backup-utility" target="_blank">Knowledge Center Article <img src="images/open_in_new_window.png" /></a></li><li><a href="https://community.rackspace.com/products/f/26/t/445" target="_blank">Community Forums <img src="images/open_in_new_window.png" /></a></li><li><a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank">Github Page <img src="images/open_in_new_window.png" /></a></li></ul></p>
+        <p><br/>The Zipit Backup Utility was designed for use with <a href="http://www.rackspace.com/cloud/sites/" target="_blank">Rackspace Cloud Sites&reg; <img src='images/open_in_new_window.png' /></a>.<br/><br/>Please note Zipit is not part of the Rackspace&reg; portfolio, and thus, is an “Unsupported Service”.<br/><br/><h3>Additional info:</h3><ul><li><a href="http://www.rackspace.com/knowledge_center/article/zipit-backup-utility" target="_blank">Knowledge Center Article <img src="images/open_in_new_window.png" /></a></li><li><a href="https://community.rackspace.com/products/f/26/t/445" target="_blank">Community Forums <img src="images/open_in_new_window.png" /></a></li><li><a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank">Github Page <img src="images/open_in_new_window.png" /></a></li></ul></p>
 
 <p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <br/><br/><a id='update' class='update' href='zipit-updater.php'><button type='button' class='css3button'>Update Now</button></a><br/><br/><em><font color='red'>Your current version will backed up in a time-stamped folder to preserve any modifications that you may have made. It is safe to remove the backed up version once the update is complete.</font></em>";} ?></p>
       </div>
@@ -225,7 +225,7 @@ body {
         <h2>Available File Backups <img src="images/hint.png" title="This is the list of file backups that you have available in your Cloud Files account created by Zipit. Use the link below the list to manage these backups." /></h2>
 <center><iframe src="zipit-view-files.php" class="files_frame" frameborder="0" scrolling="auto" name="files-list"></iframe><br/><br/></center>
 <?php 
-echo "<center>You can manage your backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-files-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>";	
+echo "<center>Manage your file backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-files-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>";	
 echo "<br/>";
 echo "</center></em><br/>";
 ?>
@@ -245,7 +245,7 @@ echo "</center></em><br/>";
 
 <center><iframe src="zipit-view-db.php" class="dbs_frame" frameborder="0" scrolling="auto" name="db-list"></iframe><br/><br/></center>
 <?php 
-echo "<center>You can manage your backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-databases-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>";	
+echo "<center>Manage your database backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-databases-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>";	
 echo "<br/>";
 echo "</center></em><br/>";
 ?>
@@ -256,7 +256,7 @@ function showBackupButton() {
 
 var val = document.db_form.db_select.value; 
 
-if (val == "Select Database") {
+if (val == "Select Database to Backup") {
 document.getElementById("backup-database").style.display="none"; 
 document.getElementById("edit-db").style.display="none";
 }
@@ -272,7 +272,7 @@ function display_Schedule() {
 
 var val = document.db_form_schedule.db_select_schedule.value; 
 
-if (val == "Select Database") {
+if (val == "Select Database to Backup") {
 document.getElementById("databases_continuous").value="Select Database From Dropdown"; 
 document.getElementById("databases_weekly").value="Select Database From Dropdown"; 
 }
@@ -334,11 +334,11 @@ function SelectAll(id)
 You can easily automate Zipit via a Scheduled Task (cronjob) via the Cloud Sites Control Panel. <br/><br/>
 
 Below you will find the "Commands" to use for the Scheduled Task (cronjob).<br/><br/> Be sure to set the "Command Language" to php!  <br/><br/>For more info on setting up a Scheduled Task (cronjob) in Cloud Sites click <a href="http://www.rackspace.com/knowledge_center/article/how-do-i-schedule-a-cron-job-for-cloud-sites" target="_blank">here <img src='images/open_in_new_window.png' /></a>.<br/><br/>
-<div id="div1" class="alldivs"> <p><h4>Files Options:</h4><br/>Continuous: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation." /><br/><input class="files_continuous" name="files_continuous" type="text" id="files_continuous" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?> auto" readonly onClick="SelectAll('files_continuous');"><br/><br/>
-Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="files_weekly" name="files_weekly" type="text" id="files_weekly" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_weekly;?> auto weekly" readonly onClick="SelectAll('files_weekly');"></div>
+<div id="div1" class="alldivs"> <p><h4>Files Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="files_continuous" name="files_continuous" type="text" id="files_continuous" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?> auto" readonly onClick="SelectAll('files_continuous');"><br/><br/>
+Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. This will give you a maximum of 7 days of backups for your files. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="files_weekly" name="files_weekly" type="text" id="files_weekly" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_weekly;?> auto weekly" readonly onClick="SelectAll('files_weekly');"></div>
 
-<div id="div2" class="alldivs"> <p><div id="db_menu_schedule" class="db_menu_schedule"><!-- database menu loads here --></div><h4>Database Options:</h4><br/>Continuous: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation." /><br/><input class="databases_continuous" name="databases_continuous" type="text" id="databases_continuous" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_continuous');"><br/><br/>
-Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="databases_weekly" name="databases_weekly" type="text" id="databases_weekly" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_weekly');"></div>
+<div id="div2" class="alldivs"> <p><div id="db_menu_schedule" class="db_menu_schedule"><!-- database menu loads here --></div><h4>Database Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="databases_continuous" name="databases_continuous" type="text" id="databases_continuous" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_continuous');"><br/><br/>
+Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. This will give you a maximum of 7 days of backups for your database. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="databases_weekly" name="databases_weekly" type="text" id="databases_weekly" value="Select Database From Dropdown" readonly onClick="SelectAll('databases_weekly');"></div>
 </p>
       </div>
       <div class="tabpage" id="tabpage_5" style="display: none;">
@@ -376,7 +376,7 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
         <center><br/><br/><iframe src="zipit-settings.php" class="settings_frame" frameborder="0" scrolling="no" name="settings"></iframe><br/><br/></center>
       </div>
 <div class="tabpage" id="tabpage_7" style="display: none;">
-        <h2>Troubleshooting</h2>
+        <h2>Troubleshooting Tips</h2>
 
  <script>
   $(function() {
