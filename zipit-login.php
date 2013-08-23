@@ -39,8 +39,15 @@ function showLoginPasswordProtect($error_msg) {
 <html>
 <head>
 <meta charset="utf-8">
-<link href="css/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="css/colorbox.css" />
+<link rel="stylesheet" href="css/zipit/jquery-ui.css" />
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<style>
+body {
+        background:#ccc;
+}
+</style>
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.colorbox.js"></script>
 		<script>
@@ -49,9 +56,17 @@ function showLoginPasswordProtect($error_msg) {
 			});
 		</script>
 </head>
+<?php
+// get installed version
+$installed_version = "zipit-version.php";
+$fh = fopen($installed_version, 'r');
+$display_version = fread($fh, 5);
+fclose($fh);
+?>
 <body>
+<a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <div id="wrapper">
-  <h1>Zipit Backup Utility</h1>
+  <h1>Zipit Backup Utility <div class="version_info" id="version_info">v<?php echo $display_version; ?></h1>
   <div id="tabContainer">
    
     <div id="tabscontent"><br/>
@@ -61,6 +76,7 @@ function showLoginPasswordProtect($error_msg) {
   </form><br />
 
 </div>
+<div class="dev_by" id="dev_by">Developed by: <a href="https://github.com/jeremehancock" target="_blank">Jereme Hancock</a></div>
 </div>
 
 
