@@ -146,7 +146,7 @@ fwrite($fp, $string);
 fclose($fp);
 
    echo '<script type="text/javascript">';
-   echo 'alert("Database Successfully '.$alert_text.'!\n\nYou may need to refresh the Database Menu.")';
+   echo 'alert("Database Connection Successfully '.$alert_text.'!\n\nYou may need to refresh the Database Menu.")';
    echo '</script>'; 
 
 if ($db_name != $_POST["db_name"]) {
