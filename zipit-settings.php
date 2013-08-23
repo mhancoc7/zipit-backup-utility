@@ -159,40 +159,40 @@ function removeSpaces(string) {
 <br />
 <p>
     API Username:<br />
-    <input name="username" type="text" id="username" value="<?php echo $username;?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is the username for your API access. This is the same username that you use to login to manage.rackspacecloud.com." />
+    <input name="username" type="text" id="username" value="<?php echo $username;?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is the username for your API access. This is the same username that you use to login to manage.rackspacecloud.com.">
 </p>
 <br />
 <p>
     API Key:<br />
-    <input name="key" type="password" id="key" value="<?php echo $key;?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is your API Key." />
+    <input name="key" type="password" id="key" value="<?php echo $key;?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is your API Key.">
 </p>
 <br />
 <hr />
 <br />
 <p>
     Datacenter:<br />
-    <input name="datacenter" type="text" id="datacenter" value="<?php echo $datacenter ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is the Datacenter where your backups will be stored. Changing this can affect how much bandwidth Zipit uses." />
+    <input name="datacenter" type="text" id="datacenter" value="<?php echo $datacenter ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is the Datacenter where your backups will be stored. Changing this can affect how much bandwidth Zipit uses.">
 </p>
 <br />
 <p>
     URL:<br />
-    <input name="url" type="text" id="url" value="<?php echo $url ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is the URL of your site. It is used to name the backups and the containers that they are stored in. Do not include http://"/>
+    <input name="url" type="text" id="url" value="<?php echo $url ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This is the URL of your site. It is used to name the backups and the containers that they are stored in. Do not include http://">
 </p>
 <br />
 <p>
     Auth Hash:<br />
-    <input name="auth_hash" type="text" id="auth_hash" value="<?php echo $auth_hash ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This unique code is used for the Automated settings. Changing this will affect any previously configured Scheduled Tasks (cronjobs). Alphanumeric characters only!" />
+    <input name="auth_hash" type="text" id="auth_hash" value="<?php echo $auth_hash ?>" onblur="this.value=removeSpaces(this.value);" required="required"> <img src="images/hint.png" title="This unique code is used for the Automated settings. Changing this will affect any previously configured Scheduled Tasks (cronjobs). Alphanumeric characters only!">
 </p>
 
 <br />
 <hr />
 <br />
 <p>
-    <input type="checkbox" name="usage" id="usage" value="allow" <?php echo $checked ?> />Help make Zipit better by providing usage feedback. <a href="http://statcounter.com/about/cookies/" target="_blank">More info... <img src="https://raw.github.com/jeremehancock/zipit-backup-utility/master/images/open_in_new_window.png"/></a>
+    <input type="checkbox" name="usage" id="usage" value="allow" <?php echo $checked ?> >Help make Zipit better by providing usage feedback. <a href="http://statcounter.com/about/cookies/" target="_blank">More info... <img src="https://raw.github.com/jeremehancock/zipit-backup-utility/master/images/open_in_new_window.png"/></a>
 </p>
 
 <p>
-    <input name="path" type="text" id="path" value="<?php echo $path ?>" onblur="this.value=removeSpaces(this.value);" required="required" readonly hidden>
+    <input name="path" type="hidden" id="path" value="<?php echo $path ?>" onblur="this.value=removeSpaces(this.value);" required="required" readonly>
 </p>
 
 <p>
