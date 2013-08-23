@@ -48,7 +48,7 @@ if($dh = opendir($db_dir)){
 if(isset($file_list)){
 echo "$select"; 
 } else {
-    echo "<center>Use the \"Add Credentials\" button below to add your database connection information.</center><br/>";
+    echo "<center><font color='red'>Use the \"Add Credentials\" button below to add your database connection information.</font></center><br/>";
 
 }
 
