@@ -45,6 +45,7 @@ function showLoginPasswordProtect($error_msg) {
 
 <style>
 body {
+font: 1em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 background: url(images/background.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
