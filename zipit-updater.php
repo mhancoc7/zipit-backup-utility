@@ -28,28 +28,7 @@ shell_exec('wget https://raw.github.com/jeremehancock/zipit-backup-utility-updat
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
   function checkForData ( ) {
-    jQuery.get('<?php echo "../".$progress_file; ?>',false,function(data){
-      if(data.length){
-        // Display the current progress
-        document.getElementById('progress').innerHTML = data;
-      }else{
-        // No need to show anything if there isn't anything happening
-      }
-    });
-  }
-  // Start the timer when the page is done loading:
-  $(function(){
-    // First Check 
-    checkForData();
-    // Start Timer
-    setInterval('checkForData()',1000); // 3 Second Intervals
-  });
-</script>
-
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript">
-  function checkForData ( ) {
-    $.get('<?php echo "../".$progress_file; ?>',false,function(data){
+    $.post('<?php echo "../".$progress_file; ?>',false,function(data){
       if(data.length){
         // Display the current progress
         document.getElementById('progress').innerHTML = data;
@@ -65,7 +44,7 @@ shell_exec('wget https://raw.github.com/jeremehancock/zipit-backup-utility-updat
 // Start Timer
     var refreshIntervalId = setInterval('checkForData()',1000); // 1 Second Intervals
 
-$.get('zipit-updater-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>', function(data) {
+$.post('zipit-updater-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>', function(data) {
   $('.result').text(data);
 clearInterval(refreshIntervalId);
 
