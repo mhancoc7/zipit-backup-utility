@@ -28,7 +28,7 @@ file_put_contents($progress_file,'<br/><center>Initializing...<br/><img src="ima
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
   function checkForData ( ) {
-    $.get('<?php echo $progress_file; ?>',false,function(data){
+    $.post('<?php echo $progress_file; ?>',false,function(data){
       if(data.length){
         // Display the current progress
         document.getElementById('progress').innerHTML = data;
@@ -44,7 +44,7 @@ file_put_contents($progress_file,'<br/><center>Initializing...<br/><img src="ima
 // Start Timer
     var refreshIntervalId = setInterval('checkForData()',1000); // 1 Second Intervals
 
-$.get('zipit-zip-db-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>&db=<?php echo $db; ?>', function(data) {
+$.post('zipit-zip-db-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>&db=<?php echo $db; ?>', function(data) {
   $('.result').text(data);
 clearInterval(refreshIntervalId);
 

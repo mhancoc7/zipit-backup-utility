@@ -293,8 +293,8 @@ document.getElementById("databases_weekly").value="web/content/zipit/zipit-zip-d
 
 function update(objS)
 {
-document.links["backup-database"].href = "zipit-zip-db.php?db=" + objS.options[objS.selectedIndex].value;
-document.links["edit-db"].href = "zipit-add-db.php?db=" + objS.options[objS.selectedIndex].value;
+document.getElementById("backup-database").href = "zipit-zip-db.php?db=" + objS.options[objS.selectedIndex].value;
+document.getElementById("edit-db").href = "zipit-add-db.php?db=" + objS.options[objS.selectedIndex].value;
 }
 
 $(document).ready(function(){
