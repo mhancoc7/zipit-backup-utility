@@ -28,8 +28,8 @@
 // Set the default timezone
    date_default_timezone_set('America/Chicago');
 
-// define backup path for auto
-    $auto_path = getcwd();
+// ensure that Zipit is running from the Zipit directory
+   chdir("$path/zipit");
 
 // If set to rotate set date for backup name
    if ($rotate == "weekly") {
@@ -44,14 +44,8 @@
    $backupname = "$url-backup-$date.zip";
 
 // define zipit log file
-   if ($auto_check == "auto") {
-    $zipitlog = "$auto_path/logs/zipit.log";
-    $logsize = filesize($zipitlog);
-   }
-   else {
     $zipitlog = "../../../logs/zipit.log";
     $logsize = filesize($zipitlog);
-   }
 
 // create zipit log file if it doesn't exist
     if(!file_exists("$zipitlog")) { 
@@ -62,12 +56,7 @@
 
 // rotate log file to keep it from growing too large
    if ($logsize > 52428800) {
-   if ($auto_check == "auto") {
-   shell_exec("mv $auto_path/logs/zipit.log $auto_path/logs/zipit_old.log");
-   }
-   else {
    shell_exec("mv ../../../logs/zipit.log ../../../logs/zipit_old.log");
-   }
    }
 
 // clean up local backups if files are older than 24 hours (86400 seconds)
@@ -172,12 +161,7 @@ $dir = "$path/zipit";
    shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web -x ./web/content/zipit\*");
 
 // Change our current working directory back to the zipit directory
-   if ($auto_check == "auto") {
-      chdir("$auto_path");
-   }
-   else {
       chdir("$path/zipit");
-   }
 
 // check to see if the backup was created
    if (file_exists("$path/zipit/zipit-backups/files/$backupname")) {
