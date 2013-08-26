@@ -150,7 +150,7 @@ $latest_version = preg_replace( "/\r|\n/", "", $latest_version );
 
 <style>
 body {
-font: 1em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font: 1em "Arial", sans-serif;
 background: url(images/background.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -159,6 +159,9 @@ background: url(images/background.jpg) no-repeat center center fixed;
 background-color:#7397a7;
 }
 </style>
+
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic' rel='stylesheet' type='text/css'>
+
 		<script src="js/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
 
@@ -235,7 +238,7 @@ $.ajaxSetup ({
     <div id="tabscontent">
 
 <div class="tabpage" id="tabpage_1">
-        <p><br/>The Zipit Backup Utility was designed for use with <a href="http://www.rackspace.com/cloud/sites/" target="_blank">Rackspace Cloud Sites&reg; <img src='images/open_in_new_window.png' /></a>.<br/><br/>Please note Zipit is not part of the Rackspace&reg; portfolio, and thus, is an “Unsupported Service”.<br/><br/><h3>Additional info:</h3><a href="http://www.rackspace.com/knowledge_center/article/zipit-backup-utility" target="_blank">Knowledge Center Article <img src="images/open_in_new_window.png" /></a><br/><a href="https://community.rackspace.com/products/f/26/t/445" target="_blank">Community Forums <img src="images/open_in_new_window.png" /></a><br/><a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank">Github Page <img src="images/open_in_new_window.png" /></a></p>
+        <p><br/>The Zipit Backup Utility was designed for use with <a href="http://www.rackspace.com/cloud/sites/" target="_blank">Rackspace Cloud Sites&reg; <img src='images/open_in_new_window.png' /></a>.<br/><br/>Please note Zipit is not part of the Rackspace&reg; portfolio, and thus, is an “Unsupported Service”.<br/><br/><h5>Additional info:</h5><a href="http://www.rackspace.com/knowledge_center/article/zipit-backup-utility" target="_blank">Knowledge Center Article <img src="images/open_in_new_window.png" /></a><br/><a href="https://community.rackspace.com/products/f/26/t/445" target="_blank">Community Forums <img src="images/open_in_new_window.png" /></a><br/><a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank">Github Page <img src="images/open_in_new_window.png" /></a></p>
 
 <p><?php if ($display_version < $latest_version) {echo "<br/>There is a new version of Zipit available! <br/><br/><a id='update' class='update' href='zipit-updater.php'><button type='button' class='css3button'>Update Now</button></a><br/><br/><em><font color='red'>Your current version will backed up in a time-stamped folder to preserve any modifications that you may have made. It is safe to remove the backed up version once the update is complete.</font></em>";} ?></p>
       </div>
