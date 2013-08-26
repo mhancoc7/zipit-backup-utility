@@ -223,13 +223,13 @@ $.ajaxSetup ({
 </div>
   <div id="tabContainer">
     <div id="tabs">
-      <ul onclick="refreshLogs();refreshDb();refreshFiles();updateDbMenu();updateDbMenuSchedule();">
-        <li id="tabHeader_1">Home</li>
-        <li id="tabHeader_2">Files</li>
-        <li id="tabHeader_3">Databases</li>
-        <li id="tabHeader_4">Scheduler</li>
-        <li id="tabHeader_5">Logs</li>
-        <li id="tabHeader_6">Troubleshooting Tips</li>
+      <ul>
+        <li class="clickHome" id="tabHeader_1">Home</li>
+        <li class="clickFiles" id="tabHeader_2">Files</li>
+        <li class="clickDatabases" id="tabHeader_3">Databases</li>
+        <li class="clickScheduler" id="tabHeader_4">Scheduler</li>
+        <li class="clickLogs" id="tabHeader_5">Logs</li>
+        <li class="clickTroubleshooting" id="tabHeader_6">Troubleshooting Tips</li>
       </ul>
     </div>
     <div id="tabscontent">
@@ -398,7 +398,7 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
     $( "#accordion" ).accordion({
       collapsible: true,
       heightStyle: "content",
-active: false
+      active: false
     });
   });
   </script>
@@ -444,5 +444,52 @@ if ($usage_feedback == "allow") {
 include("zipit-usage-feedback.php");
 }
 ?>
+
+<script>
+$(function () {
+    $('.clickHome').click(function () {
+        refreshLogs();
+        refreshDb();
+        refreshFiles();
+        updateDbMenu();
+        updateDbMenuSchedule();
+    });
+});
+
+$(function () {
+    $('.clickFiles').click(function () {
+        refreshFiles();
+    });
+});
+
+$(function () {
+    $('.clickDatabases').click(function () {
+        refreshDb();
+        updateDbMenu();
+    });
+});
+
+$(function () {
+    $('.clickScheduler').click(function () {
+        updateDbMenuSchedule();
+    });
+});
+
+$(function () {
+    $('.clickLogs').click(function () {
+        refreshLogs();
+    });
+});
+
+$(function () {
+    $('.clickTroubleshooting').click(function () {
+        refreshLogs();
+        refreshDb();
+        refreshFiles();
+        updateDbMenu();
+        updateDbMenuSchedule();
+    });
+});
+</script>
 </body>
 </html>

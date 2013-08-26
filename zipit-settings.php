@@ -193,7 +193,7 @@ function removeSpaces(string) {
 $('input').bind('keypress', function (event) {
     var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (!regex.test(key)) {
+    if (!regex.test(key) && key.charCodeAt(0) > 32) {
        event.preventDefault();
        return false;
     }
