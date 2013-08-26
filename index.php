@@ -165,20 +165,23 @@ background-color:#7397a7;
 		<script src="js/jquery.colorbox.js"></script>
 		<script>
 			$(document).ready(function(){
-				$(".backup-files").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
+				$(".backup-files").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
 			$(document).ready(function(){
-				$(".backup-database").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
+				$(".backup-database").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
 
                         $(document).ready(function(){
-				$(".add-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
+				$(".add-db").colorbox({iframe:true, innerWidth:"400px", innerHeight:"350px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
 			});
                         $(document).ready(function(){
-				$(".edit-db").colorbox({iframe:true, width:"400px", height:"500px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
+				$(".edit-db").colorbox({iframe:true, innerWidth:"400px", innerHeight:"350px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
 			});
                         $(document).ready(function(){
-				$(".update").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
+				$(".update").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
+			});
+                        $(document).ready(function(){
+				$(".settings").colorbox({iframe:true, innerWidth:"650px", innerHeight:"550px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
 			});
 		</script>
 
@@ -200,12 +203,22 @@ background-color:#7397a7;
     });
   });
   </script>
+
+<script type = "text/javascript">
+
+$.ajaxSetup ({
+    // Disable caching of AJAX responses
+    cache: false
+});
+</script>
+
 </head>
 <body>
 <a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <div id="wrapper">
   <h1>Zipit Backup Utility <div class="version_info" id="version_info">v<?php echo $display_version; ?></h1>
 <div id="logout">
+<a class='settings' href="zipit-settings.php" title="Settings"><img src="images/settings.png" /></a>
 <a href="index.php?logout=1" title="Logout"><img src="images/logout.png" /></a>
 </div>
   <div id="tabContainer">
@@ -216,8 +229,7 @@ background-color:#7397a7;
         <li id="tabHeader_3">Databases</li>
         <li id="tabHeader_4">Scheduler</li>
         <li id="tabHeader_5">Logs</li>
-        <li id="tabHeader_6">Settings</li>
-        <li id="tabHeader_7">Troubleshooting Tips</li>
+        <li id="tabHeader_6">Troubleshooting Tips</li>
       </ul>
     </div>
     <div id="tabscontent">
@@ -305,7 +317,7 @@ $(document).ready(function(){
 
 function updateDbMenu()
 {
-        $('#db_menu').load('zipit-db-menu.php');
+        $("#db_menu").load("zipit-db-menu.php");
         document.getElementById("backup-database").style.display="none"; 
         document.getElementById("edit-db").style.display="none";
 }
@@ -377,11 +389,8 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
 </script>
 
       </div>
-      <div class="tabpage" id="tabpage_6" style="display: none;">
-        <h2>Settings</h2>
-        <center><br/><br/><iframe src="zipit-settings.php" class="settings_frame" frameborder="0" scrolling="no" name="settings"></iframe><br/><br/></center>
-      </div>
-<div class="tabpage" id="tabpage_7" style="display: none;">
+
+<div class="tabpage" id="tabpage_6" style="display: none;">
         <h2>Troubleshooting Tips</h2>
 
  <script>
@@ -413,7 +422,7 @@ active: false
     <div class="cause_fix">Cause:</div>
     <p>This error indicates that the "Auth Hash" that was used to run Zipit did not match the value within the Zipit configuration. This error is commonly seen if the Scheduled Task option is setup with the wrong "Auth Hash". </p><br/>
 <div class="cause_fix">Solution:</div>
-<p>Be sure that you use the exact command for the Scheduled Task that is found on the Scheduler tab. You can set the "Auth Hash" on the Settings tab.</p>
+<p>Be sure that you use the exact command for the Scheduled Task that is found on the Scheduler tab. You can set the "Auth Hash" by clicking the Settings icon.</p>
   </div>
   <h3>Can't Write to Log!</h3>
   <div>

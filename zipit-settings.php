@@ -30,8 +30,9 @@ if (isset($_POST["Submit"])) {
 
 if ($zipituser == $_POST["zipituser"] || $password == $_POST["password"]) {
 echo '<script type="text/javascript">';
-echo 'alert("Zipit Successfully Updated!")';
+echo 'alert("Zipit Successfully Updated!\n\nIf you updated your Zipit Login credentials you will be redirected to the login page.")';
 echo '</script>';
+echo "<script>parent.location.href='./index.php'</script>";
 
 }
 
@@ -75,20 +76,6 @@ $fp = fopen("zipit-config.php", "w");
 fwrite($fp, $string);
 
 fclose($fp);
-
-//redirect to login
-
-if ($zipituser != $_POST["zipituser"] || $password != $_POST["password"]) {
-
-echo '<script type="text/javascript">';
-echo 'alert("You updated your Zipit Login credentials!\n\nYou will now be redirected to the login page.")';
-echo '</script>';
-echo "<script>parent.location.href='./index.php'</script>";
-}
-
-echo '<script type="text/javascript">';
-echo 'window.location.reload()';
-echo '</script>';
 
 }
 
@@ -143,7 +130,7 @@ function removeSpaces(string) {
 <div class="wrapper">
 
 
-<div style="text-align:center">
+<div style="text-align:center"><br />
 <form action="" method="post" name="settings" id="settings" class="settings">
 <p>
      Zipit Username:<br />
@@ -213,5 +200,13 @@ $('input').bind('keypress', function (event) {
 });
 </script>
 </div>
+<script>
+$(function(){
+    parent.$.colorbox.resize({
+        innerWidth:$('body').width(),
+        innerHeight:$('body').height()
+    });
+});
+</script>
 </body>
 </html>

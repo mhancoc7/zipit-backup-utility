@@ -182,7 +182,7 @@ function removeSpaces(string) {
 
 
 <div style="text-align:center">
-<form action="" method="post" name="install" id="install"><br/>
+<form action="" method="post" name="install" id="install">
 <?php if ($wordpress_installed == "true") {echo "<center><font color=red><br/>Wordpress Install Detected!</font></center>";} elseif ($joomla_installed == "true") {echo "<center><font color=red><br/>Joomla Install Detected!</font></center>";} elseif ($drupal_installed == "true") {echo "<center><font color=red><br/>Drupal Install Detected!</font></center>";}?><br/>
 <em>Enter your database credentials</em>
 <br/><br />
@@ -235,5 +235,13 @@ function removeSpaces(string) {
 
 </script>
 </div>
+<script>
+$(function(){
+    parent.$.colorbox.resize({
+        innerWidth:$('body').width(),
+        innerHeight:$('body').height()
+    });
+});
+</script>
 </body>
 </html>
