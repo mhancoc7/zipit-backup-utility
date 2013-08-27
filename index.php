@@ -184,7 +184,7 @@ background-color:#7397a7;
 				$(".update").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
                         $(document).ready(function(){
-				$(".settings").colorbox({iframe:true, innerWidth:"650px", innerHeight:"550px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });
+				$(".settings").colorbox({iframe:true, innerWidth:"650px", innerHeight:"550px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "35px" });
 			});
 		</script>
 
