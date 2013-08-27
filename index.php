@@ -161,6 +161,7 @@ background-color:#7397a7;
 </style>
 
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
 		<script src="js/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
