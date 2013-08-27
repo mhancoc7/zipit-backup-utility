@@ -184,7 +184,7 @@ background-color:#7397a7;
 				$(".update").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });
 			});
                         $(document).ready(function(){
-				$(".settings").colorbox({iframe:true, innerWidth:"650px", innerHeight:"550px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "35px" });
+				$(".settings").colorbox({onOpen: function() {$("#settings-tip").tooltip("disable");},onClosed: function() {$("#tt").tooltip("enable");},iframe:true, innerWidth:"650px", innerHeight:"550px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "35px" });
 			});
 		</script>
 
@@ -221,7 +221,7 @@ $.ajaxSetup ({
 <div id="wrapper">
   <h1>Zipit Backup Utility <div class="version_info" id="version_info">v<?php echo $display_version; ?></h1>
 <div id="logout">
-<a class='settings' href="zipit-settings.php" title="Settings"><img src="images/settings.png" /></a>
+<a class='settings' href="zipit-settings.php"><img src="images/settings.png" class="settings-tip" title="Settings"/></a>
 <a href="index.php?logout=1" title="Logout"><img src="images/logout.png" /></a>
 </div>
   <div id="tabContainer">
