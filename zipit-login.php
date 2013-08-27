@@ -39,6 +39,7 @@ function showLoginPasswordProtect($error_msg) {
 <html>
 <head>
 <meta charset="utf-8">
+<title>Zipit Backup Utility</title>
 <link rel="stylesheet" href="css/colorbox.css" />
 <link rel="stylesheet" href="css/zipit/jquery-ui.css" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
