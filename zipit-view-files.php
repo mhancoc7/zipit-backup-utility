@@ -12,7 +12,7 @@
 echo "<link href='css/style.css' rel='stylesheet' type='text/css'><div class='logs'>";
 
 // include password protection
-    require("zipit-login.php"); 
+    require_once("zipit-login.php"); 
 
 // require zipit configuration
     require('zipit-config.php');

@@ -7,7 +7,7 @@
 ###############################################################
 
 // include password protection
-    require("zipit-login.php"); 
+    require_once("zipit-login.php");  
 
 $db_dir = "./dbs"; 
 $show = array( '.php'); 

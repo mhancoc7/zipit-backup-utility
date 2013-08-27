@@ -7,7 +7,7 @@
 ###############################################################
 
 // include password protection
-    require("zipit-login.php"); 
+    require_once("zipit-login.php"); 
 
 // define zipit log file
     $zipitlog = "../../../logs/zipit.log";
