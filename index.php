@@ -6,9 +6,6 @@
 # Visit http://zipitbackup.com for updates
 ###############################################################
 
-// specify namespace
-   namespace OpenCloud;
-
 // include password protection
     require_once("zipit-login.php"); 
 

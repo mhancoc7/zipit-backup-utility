@@ -98,7 +98,7 @@ $dir = "$path/zipit";
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
    $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-   $stringData = "$logtimestamp Zipit started\n$logtimestamp -- Authorizing\n";
+   $stringData = "$logtimestamp Zipit Started\n";
    fwrite($fh, $stringData);
    fclose($fh);
 
@@ -118,12 +118,12 @@ $dir = "$path/zipit";
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Authorization Failed!\n$logtimestamp Zipit completed\n\n";
+      $stringData = "$logtimestamp -- Authorization Failed!\n$logtimestamp Zipit Completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
       if ($auto_check == "auto") {
-         echo date("h:i:s")." -- Not Authorized\n";
+         echo date("h:i:s")." -- Authorization Failed!\n";
       } 
      
       else {
@@ -135,18 +135,18 @@ $dir = "$path/zipit";
    die();
    }
 
-   if ($auto_check == "auto") {
-      echo date("h:i:s")." -- Zip Started!\n";
-   }
-
-   else {
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Zipping!\n";
+      $stringData = "$logtimestamp -- Zipping...\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
+   if ($auto_check == "auto") {
+      echo date("h:i:s")." -- Zipping...\n";
+   }
+
+   else {
       file_put_contents($progress_file,'<br/><center>Zipping...<br/><img src="images/progress.gif"/></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
@@ -174,7 +174,7 @@ $dir = "$path/zipit";
       fclose($fh);
 
       if ($auto_check == "auto") {
-         echo date("h:i:s")." -- Zip Completed!\n";
+         echo date("h:i:s")." -- Zipping Complete!\n";
       }
    }
 
@@ -182,16 +182,16 @@ $dir = "$path/zipit";
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Zip Failed!\n$logtimestamp Zipit completed\n\n";
+      $stringData = "$logtimestamp -- Zipping Failed!\n$logtimestamp Zipit Completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
       if ($auto_check == "auto") {
-         echo date("h:i:s")." -- Zip Failed!\n";
+         echo date("h:i:s")." -- Zipping Failed!\n";
       }
 
       else {
-         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Zip Failed! Click to Close</button></center>');
+         file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Zipping Failed! Click to Close</button></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
          sleep(3);
@@ -218,12 +218,12 @@ $dir = "$path/zipit";
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
    $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-   $stringData = "$logtimestamp -- Connecting to Cloud Files\n";
+   $stringData = "$logtimestamp -- Connecting to Cloud Files...\n";
    fwrite($fh, $stringData);
    fclose($fh);
 
     if ($auto_check == "auto") {
-       echo date("h:i:s")." -- Connecting to Cloud Files\n";
+       echo date("h:i:s")." -- Connecting to Cloud Files...\n";
     }
 
     else {
@@ -240,7 +240,7 @@ $dir = "$path/zipit";
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Connected to Cloud Files\n";
+      $stringData = "$logtimestamp -- Connected to Cloud Files!\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
@@ -260,12 +260,12 @@ $dir = "$path/zipit";
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Cloud Files API connection could not be established!\n$logtimestamp Zipit completed\n\n";
+      $stringData = "$logtimestamp -- Cloud Files API Connection Failed!\n$logtimestamp Zipit Completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
       if ($auto_check == "auto") {
-         echo date("h:i:s")." -- Cloud Files API connection could not be established!\n";
+         echo date("h:i:s")." -- Cloud Files API Connection Failed!\n";
       }
 
       else {
@@ -284,7 +284,7 @@ $dir = "$path/zipit";
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
    $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-   $stringData = "$logtimestamp -- Creating Cloud Files Container.\n";
+   $stringData = "$logtimestamp -- Creating Cloud Files Container...\n";
    fwrite($fh, $stringData);
    fclose($fh);
 
@@ -317,7 +317,7 @@ $dir = "$path/zipit";
 // write to log
    $logtimestamp =  date("M-d-Y-h:i:s");
    $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-   $stringData = "$logtimestamp -- Moving backup to Cloud Files\n";
+   $stringData = "$logtimestamp -- Moving backup to Cloud Files...\n";
    fwrite($fh, $stringData);
    fclose($fh);
 
@@ -348,7 +348,7 @@ $dir = "$path/zipit";
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Backup failed integrity check! Please try again.\n$logtimestamp Zipit completed\n\n";
+      $stringData = "$logtimestamp -- Backup failed integrity check! Please try again.\n$logtimestamp Zipit Completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
@@ -374,7 +374,7 @@ $dir = "$path/zipit";
 // write to log
       $logtimestamp =  date("M-d-Y-h:i:s");
       $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-      $stringData = "$logtimestamp -- Backup Complete!\n$logtimestamp Zipit completed\n\n";
+      $stringData = "$logtimestamp -- Backup Complete!\n$logtimestamp Zipit Completed\n\n";
       fwrite($fh, $stringData);
       fclose($fh);
 
