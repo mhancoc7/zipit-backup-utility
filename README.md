@@ -26,7 +26,7 @@ Usage
 Updating
 --------
 
-    When a new version of the Zipit Backup Utility is released you will see an Update button on the Home tab. 
+    When a new version is released you will see an Update button on the Home tab. 
     Simply click Update and wait for the update process to complete. 
     Your previous installation will be backed up in a time stamped folder in the content folder.
     This will help ensure that any custom modifications that you have made will not be lost. 
