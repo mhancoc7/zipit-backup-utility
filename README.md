@@ -8,7 +8,7 @@ Installation
 
     The Zipit Backup Utility is designed to be installed with the Zipit Backup Utililty Installer. 
 
-    1. Download the Zipit Backup Utility Installer [here](https://raw.github.com/jeremehancock/zipit-installer/master/zipit-install.php).
+    1. Download the Zipit Backup Utility Installer [here]: https://raw.github.com/jeremehancock/zipit-installer/master/zipit-install.php.
     2. Be sure to name the file zipit-install.php. 
     3. Upload the zipit-install.php file to the content folder of your site.
     4. Navigate your browser to domain.com/zipit-install.php.
