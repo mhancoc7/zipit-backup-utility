@@ -40,9 +40,9 @@ License
 
 
     If you use the tool described in this article, you agree that the tool is an “Unsupported Service”. 
-    Rackspace&reg; makes no representation or warranty whatsoever regarding any Unsupported Service, and you 
-    agree that Rackspace&reg; will not be liable to you for any loss or damage arising from the provision of 
+    Rackspace makes no representation or warranty whatsoever regarding any Unsupported Service, and you 
+    agree that Rackspace will not be liable to you for any loss or damage arising from the provision of 
     the Unsupported Service.  The Service Level Guaranties will not apply to the Unsupported Service, or 
     any other aspect of your services that are adversely affected by the Unsupported Service.  
-    You acknowledge that Unsupported Services may not interoperate with Rackspace’s&reg; other services or 
+    You acknowledge that Unsupported Services may not interoperate with Rackspace’s other services or 
     other third party services you use.
