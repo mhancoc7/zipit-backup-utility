@@ -158,7 +158,7 @@ $dir = "$path/zipit";
    chdir("../../");
 
 // execute the zip
-   shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web -x ./web/content/zipit\*");
+   shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web -x ./web/content/zipit\* ./logs/zipit.log");
 
 // Change our current working directory back to the zipit directory
       chdir("$path/zipit");
