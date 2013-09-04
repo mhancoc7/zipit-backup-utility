@@ -26,14 +26,14 @@ define('TIMEOUT_CHECK_ACTIVITY', true);
 $timeout = (TIMEOUT_MINUTES == 0 ? 0 : time() + TIMEOUT_MINUTES * 60);
 
 if(isset($_GET['logout'])) {
-  setcookie("verify", '', $timeout, '/'); // clear password;
-  header('Location: ' . LOGOUT_URL);
-  exit();
+   setcookie("verify", '', $timeout, '/'); // clear password;
+   header('Location: ' . LOGOUT_URL);
+   exit();
 }
 
-if(!function_exists('showLoginPasswordProtect')) {
+if (!function_exists('showLoginPasswordProtect')) {
+   function showLoginPasswordProtect($error_msg) {
 
-function showLoginPasswordProtect($error_msg) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,26 +46,25 @@ function showLoginPasswordProtect($error_msg) {
 
 <style>
 body {
-font: 1em "Arial", sans-serif;
-background: url(images/background.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-background-color:#7397a7;
+   font: 1em "Arial", sans-serif;
+   background: url(images/background.jpg) no-repeat center center fixed; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   background-color:#7397a7;
 }
 </style>
 
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic' rel='stylesheet' type='text/css'>
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-		<script src="js/jquery.js"></script>
-		<script src="js/jquery.colorbox.js"></script>
-		<script>
-			$(document).ready(function(){
-				$(".iframe").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false});
-			});
-		</script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.colorbox.js"></script>
+<script>
+   $(document).ready(function(){$(".iframe").colorbox({iframe:true, width:"400px", height:"130px", closeButton:false, escKey:false, overlayClose:false, scrolling:false});});
+</script>
+
 </head>
 <?php
 // get installed version
@@ -95,9 +94,8 @@ fclose($fh);
 </html>
 
 <?php
-
-  die();
-}
+   die();
+   }
 }
 
 if (isset($_POST['access_password'])) {
@@ -116,7 +114,6 @@ if (isset($_POST['access_password'])) {
     unset($_POST['access_login']);
     unset($_POST['access_password']);
     unset($_POST['Submit']);
-
 
   }
 

@@ -7,18 +7,17 @@
 ###############################################################
 
 // include password protection
-    require_once("zipit-login.php"); 
+require_once("zipit-login.php"); 
 
 // require zipit configuration
-    require('zipit-config.php');
+require('zipit-config.php');
 
 // define zipit log file
-    $zipitlog = "../../../logs/zipit.log";
+$zipitlog = "../../../logs/zipit.log";
 
 // overwrite log file
-
-   $fp = fopen("$zipitlog","w");  
-   fwrite($fp,"----Zipit Logs----\n\n");  
-   fclose($fp); 
+$fp = fopen("$zipitlog","w");  
+fwrite($fp,"----Zipit Logs----\n\n");  
+fclose($fp); 
 
 ?>

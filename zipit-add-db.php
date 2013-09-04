@@ -7,23 +7,22 @@
 ###############################################################
 
 // include password protection
-    require_once("zipit-login.php"); 
+require_once("zipit-login.php"); 
 
 // require zipit configuration
-    require('zipit-config.php');
+require('zipit-config.php');
 
 // set Wordpress config path
-  $wordpress = $path.'/wp-config.php';
+$wordpress = $path.'/wp-config.php';
 
 // set Joomla config path
-  $joomla = $path.'/configuration.php';
+$joomla = $path.'/configuration.php';
 
 // set Drupal config path
-  $drupal = $path.'/sites/default/settings.php';
-
+$drupal = $path.'/sites/default/settings.php';
 
 // get database to backup
-if ( isset( $_GET['db'] ) && !empty( $_GET['db'] ) ) {
+if (isset( $_GET['db']) && !empty( $_GET['db'])) {
    $db = $_GET['db'];
    $db_file = $db."-config.php";
    require("./dbs/$db_file");
@@ -33,64 +32,60 @@ if ( isset( $_GET['db'] ) && !empty( $_GET['db'] ) ) {
 }
 
 elseif (file_exists($wordpress)) {
-
-include($wordpress);
-if (file_exists("./dbs/".DB_NAME."-config.php")) {
-$wordpress_installed = "false";
-   $button_text = "Add";
-   $alert_text = "Added";
-   $display_delete = "display:none";
-}
-
-else {
-$wordpress_installed = "true";
-   $button_text = "Add";
-   $alert_text = "Added";
-   $display_delete = "display:none";
-}
+   include($wordpress);
+      if (file_exists("./dbs/".DB_NAME."-config.php")) {
+         $wordpress_installed = "false";
+         $button_text = "Add";
+         $alert_text = "Added";
+         $display_delete = "display:none";
+      }
+      else {
+         $wordpress_installed = "true";
+         $button_text = "Add";
+         $alert_text = "Added";
+         $display_delete = "display:none";
+      }
 }
 
 elseif (file_exists($joomla) && strpos(file_get_contents($joomla), 'Joomla')) {
-include($joomla);
-$jconfig = new JConfig();
-if (file_exists("./dbs/".$jconfig->db."-config.php")) {
-   $joomla_installed = "false";
-   $button_text = "Add";
-   $alert_text = "Added";
-   $display_delete = "display:none";
-}
-
-else {
-   $joomla_installed = "true";
-   $button_text = "Add";
-   $alert_text = "Added";
-   $display_delete = "display:none";
-$db_name = $jconfig->db;
-$db_user = $jconfig->user;
-$db_pass = $jconfig->password;
-$db_host = $jconfig->host;
-}
+   include($joomla);
+   $jconfig = new JConfig();
+      if (file_exists("./dbs/".$jconfig->db."-config.php")) {
+         $joomla_installed = "false";
+         $button_text = "Add";
+         $alert_text = "Added";
+         $display_delete = "display:none";
+      }
+      else {
+         $joomla_installed = "true";
+         $button_text = "Add";
+         $alert_text = "Added";
+         $display_delete = "display:none";
+         $db_name = $jconfig->db;
+         $db_user = $jconfig->user;
+         $db_pass = $jconfig->password;
+         $db_host = $jconfig->host;
+      }
 }
 
 elseif (file_exists($drupal)) {
-include($drupal);
-if (file_exists("./dbs/".$databases['default']['default']['database']."-config.php")) {
-$drupal_installed = "false";
-   $button_text = "Add";
-   $alert_text = "Added";
-   $display_delete = "display:none";
-}
-
-else {
-$drupal_installed = "true";
-   $button_text = "Add";
-   $alert_text = "Added";
-   $display_delete = "display:none";
-$db_name = $databases['default']['default']['database'];
-$db_user = $databases['default']['default']['username'];
-$db_pass = $databases['default']['default']['password'];
-$db_host = $databases['default']['default']['host'];
-}
+   include($drupal);
+      if (file_exists("./dbs/".$databases['default']['default']['database']."-config.php")) {
+         $drupal_installed = "false";
+         $button_text = "Add";
+         $alert_text = "Added";
+         $display_delete = "display:none";
+      }
+     else {
+        $drupal_installed = "true";
+        $button_text = "Add";
+        $alert_text = "Added";
+        $display_delete = "display:none";
+        $db_name = $databases['default']['default']['database'];
+        $db_user = $databases['default']['default']['username'];
+        $db_pass = $databases['default']['default']['password'];
+        $db_host = $databases['default']['default']['host'];
+    }
 }
 
 else {
@@ -100,30 +95,16 @@ else {
 }
 
 if (isset($_POST["Submit"])) {
-
-// check database connection
-    $link = mysql_connect($_POST["db_host"],$_POST["db_user"],$_POST["db_pass"]);
-        if (!$link) {
-
-   echo '<script type="text/javascript">';
-   echo 'alert("Database Connection Failed!\n\nCheck credentials and try again.")';
-   echo 'window.location="zipit-add-db.php"';
-   echo '</script>'; 
-
-         }
-
-// check for database existence
-    $db_selected = mysql_select_db($_POST["db_name"], $link);
-        if (!$db_selected) {
-   echo '<script type="text/javascript">';
-   echo 'alert("Database Connection Failed!\n\nCheck credentials and try again.")';
-   echo '</script>'; 
-
-         }
-
-else {
-
-$string = '<?php 
+// check database connection and database existence
+   $link = mysql_connect($_POST["db_host"],$_POST["db_user"],$_POST["db_pass"]);
+   $db_selected = mysql_select_db($_POST["db_name"], $link);
+   if (!$db_selected) {
+      echo '<script>';
+      echo 'alert("Database Connection Failed!\n\nCheck credentials and try again.")';
+      echo '</script>'; 
+   }
+   else {
+      $string = '<?php 
 ###############################################################
 # Zipit Backup Utility
 ###############################################################
@@ -139,47 +120,47 @@ $db_host = "'. $_POST["db_host"]. '";
 
 ?>';
 
-$fp = fopen("./dbs/".$_POST['db_name']."-config.php", "w");
+   $fp = fopen("./dbs/".$_POST['db_name']."-config.php", "w");
+   fwrite($fp, $string);
+   fclose($fp);
 
-fwrite($fp, $string);
-
-fclose($fp);
-
-   echo '<script type="text/javascript">';
+   echo '<script>';
    echo 'alert("Database Connection Successfully '.$alert_text.'!\n\nYou may need to refresh the Database Menu.")';
    echo '</script>'; 
 
-if ($db_name != $_POST["db_name"]) {
-shell_exec("rm ./dbs/$db_file");
-}
-   echo '<script type="text/javascript">';
+      if ($db_name != $_POST["db_name"]) {
+         shell_exec("rm ./dbs/$db_file");
+      }
+
+   echo '<script>';
    echo 'window.location="zipit-add-db.php?db='.$_POST["db_name"].'"';
    echo '</script>'; 
-}
+   }
 
 }
-   echo '<script type="text/javascript">';
-   echo 'parent.updateDbMenu();';
-   echo '</script>'; 
+
+echo '<script>';
+echo 'parent.updateDbMenu();';
+echo '</script>'; 
+
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-		<script src="js/jquery.js"></script>
-<link rel="stylesheet" href="css/jquery-ui.css" />
+<script src="js/jquery.js"></script>
+<link rel="stylesheet" href="css/zipit/jquery-ui.css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-<script language="javascript" type="text/javascript">
-function removeSpaces(string) {
- return string.split(' ').join('');
-}
+<script>
+   function removeSpaces(string) {
+      return string.split(' ').join('');
+   }
 </script>
 
 </head>
 <body>
 
 <div class="wrapper">
-
 
 <div style="text-align:center">
 <form action="" method="post" name="install" id="install">
@@ -214,34 +195,31 @@ function removeSpaces(string) {
 </p>
 
 </form>
-<script type="text/javascript">
-    function confirmDbDelete() {
-        if (confirm('Are you sure you want to delete this database connection?\n\nThis can\'t be undone!')) {
-            //Make ajax call
-            $.ajax({
-                url: "zipit-delete-db.php?db=<?php echo $db; ?>",
-                type: "POST",
-                data: {id : 5},
-                dataType: "html", 
-                success: function() {
-                    window.location="zipit-add-db.php";
-                    parent.updateDbMenu();
-                }
-            });
-
-        }
-    }
-
-
+<script>
+   function confirmDbDelete() {
+      if (confirm('Are you sure you want to delete this database connection?\n\nThis can\'t be undone!')) {
+         $.ajax({
+            url: "zipit-delete-db.php?db=<?php echo $db; ?>",
+            type: "POST",
+            data: {id : 5},
+            dataType: "html", 
+            success: function() {
+               window.location="zipit-add-db.php";
+               parent.updateDbMenu();
+            }
+         });
+      }
+   }
 </script>
 </div>
+
 <script>
-$(function(){
-    parent.$.colorbox.resize({
-        innerWidth:$('body').width(),
-        innerHeight:$('body').height()
-    });
-});
+   $(function(){
+      parent.$.colorbox.resize({
+         innerWidth:$('body').width(),
+         innerHeight:$('body').height()
+      });
+   });
 </script>
 </body>
 </html>
