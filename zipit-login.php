@@ -76,20 +76,16 @@ fclose($fh);
 <body>
 <a href="https://github.com/jeremehancock/zipit-backup-utility" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <div id="wrapper">
-  <h1>Zipit Backup Utility <div class="version_info" id="version_info">v<?php echo $display_version; ?></h1>
-  <div id="tabContainer">
-   
-    <div id="tabscontent"><br/>
-  <form method="post" style="text-align:center;">
-    <font color="red"><?php echo $error_msg; ?></font><br />
+<h1>Zipit Backup Utility <div class="version_info" id="version_info">v<?php echo $display_version; ?></h1>
+<div id="tabContainer">
+<div id="tabscontent"><br/>
+<form method="post" style="text-align:center;">
+<font color="red"><?php echo $error_msg; ?></font><br />
 <?php if (USE_USERNAME) echo 'Username: <input type="input" name="access_login" style="font-size:18px;" autofocus/>&nbsp;&nbsp;Password: &nbsp;'; ?><input type="password" name="access_password" style="font-size:18px;" />&nbsp;&nbsp;&nbsp;<button type="submit" class="css3button">Submit</button>
-  </form><br />
-
+</form><br />
 </div>
 <div class="dev_by" id="dev_by">Developed by: <a href="https://github.com/jeremehancock" target="_blank">Jereme Hancock</a></div>
 </div>
-
-
 </body>
 </html>
 
