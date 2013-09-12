@@ -56,14 +56,9 @@ body {
 }
 
 #tabscontent {
-	-moz-border-radius-topleft: 5px;
-	-moz-border-radius-topright: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px; 
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px; 
 	padding:10px 10px 25px;
 	background: #FFFFFF; /* old browsers */
 	background: -moz-linear-gradient(top, #FFFFFF 0%, #FFFFFF 90%, #e4e9ed 100%); /* firefox */
