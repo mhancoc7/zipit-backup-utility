@@ -59,12 +59,12 @@ body {
    -webkit-border-radius: 5px;
    -moz-border-radius: 5px;
    border-radius: 5px; 
-	padding:10px 10px 25px;
-	background: #FFFFFF; /* old browsers */
-	background: -moz-linear-gradient(top, #FFFFFF 0%, #FFFFFF 90%, #e4e9ed 100%); /* firefox */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed)); /* webkit */
-	margin:0;
-	color:#333;
+   padding:10px 10px 25px;
+   background: #FFFFFF; /* old browsers */
+   background: -moz-linear-gradient(top, #FFFFFF 0%, #FFFFFF 90%, #e4e9ed 100%); /* firefox */
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed)); /* webkit */
+   margin:0;
+   color:#333;
 }
 </style>
 
