@@ -140,12 +140,12 @@ die();
 // write to log
 $logtimestamp =  date("M-d-Y-h:i:s");
 $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-$stringData = "$logtimestamp -- Dumping Database...\n";
+$stringData = "$logtimestamp -- Dumping Database ($db_name)...\n";
 fwrite($fh, $stringData);
 fclose($fh);
 
 if ($auto_check == "auto") {
-   echo date("h:i:s")." -- Dumping Database...\n";
+   echo date("h:i:s")." -- Dumping Database ($db_name)...\n";
 }
 else {
 // update progress file
