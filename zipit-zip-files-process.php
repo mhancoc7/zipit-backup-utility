@@ -24,7 +24,7 @@ if ($auth_hash == $auth) {
   stream_set_blocking($pipe, false);
 
    while (!feof($pipe)) {
-      fread($pipe, 10240);
+      fread($pipe, 5120);
       sleep(1);
       flush();
    }
