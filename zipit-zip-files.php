@@ -12,6 +12,9 @@ require_once("zipit-login.php");
 // require zipit configuration
 require('zipit-config.php');
 
+// get profile for backup
+$profile = $_GET['profile'];
+
 // generate hash to create progress file
 $progress_hash = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
 
@@ -44,7 +47,7 @@ file_put_contents($progress_file,'<br/><center>Initializing...<br/><img src="ima
       checkForData();
 // Start Timer
       var refreshIntervalId = setInterval('checkForData()',1000); // 1 Second Intervals
-         $.post('zipit-zip-files-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>', function(data) {
+         $.post('zipit-zip-files-process.php?auth=<?php echo $auth_hash; ?>&progress=<?php echo $progress_hash; ?>&profile=<?php echo $profile; ?>', function(data) {
             $('.result').text(data);
             clearInterval(refreshIntervalId);
          });

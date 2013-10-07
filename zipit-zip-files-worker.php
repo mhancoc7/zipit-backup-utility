@@ -25,6 +25,19 @@ $auto_check = $argv[3];
 // check for rotation option
 $rotate = $argv[4];
 
+// get profile config file name
+$profile = $argv[5];
+$profile_file = $profile."-profile.php";
+
+// include database config file
+if (isset($profile) && file_exists("$path/zipit/excludes/$profile_file")) {
+   include("$path/zipit/excludes/$profile_file");
+   $profile_name = $profile."-profile";
+}
+else {
+   $profile_name = "Full-Backup-Default-profile";
+}
+
 // Set the default timezone
 date_default_timezone_set('America/Chicago');
 
@@ -41,7 +54,12 @@ else {
 }
 
 // Set backup name
-$backupname = "$url-backup-$date.zip";
+if (isset($profile) && file_exists("$path/zipit/excludes/$profile_file")) {
+   $backupname = "$url-backup-$date-$profile_name.zip";
+}
+else {
+   $backupname = "$url-backup-$date-Full-Backup-Default-profile.zip";
+}
 
 // define zipit log file
 $zipitlog = "../../../logs/zipit.log";
@@ -136,12 +154,12 @@ else {
 // write to log
 $logtimestamp =  date("M-d-Y-h:i:s");
 $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
-$stringData = "$logtimestamp -- Zipping...\n";
+$stringData = "$logtimestamp -- Zipping ($profile_name)...\n";
 fwrite($fh, $stringData);
 fclose($fh);
 
 if ($auto_check == "auto") {
-   echo date("h:i:s")." -- Zipping...\n";
+   echo date("h:i:s")." -- Zipping ($profile_name)...\n";
 }
 
 else {
@@ -157,7 +175,7 @@ chdir("$path");
 chdir("../../");
 
 // execute the zip
-shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname lib logs web -x ./web/content/zipit\* ./logs/zipit.log");
+shell_exec("zip -9pr $path/zipit/zipit-backups/files/$backupname . -x $folder_excludes $file_excludes");
 
 // Change our current working directory back to the zipit directory
 chdir("$path/zipit");

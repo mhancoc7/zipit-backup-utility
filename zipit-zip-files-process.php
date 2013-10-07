@@ -15,8 +15,11 @@ $auth = $_GET['auth'];
 // get name of progress file. This will keep on demand backuups from colliding with auto backups
 $progress_hash = $_GET['progress'];
 
+// get profile for backup
+$profile = $_GET['profile'];
+
 if ($auth_hash == $auth) {
-   $cmd = "php zipit-zip-files-worker.php $auth_hash $progress_hash";
+   $cmd = "php zipit-zip-files-worker.php $auth_hash $progress_hash noauto norotate $profile";
    $pipe = popen($cmd, 'r');
    if (empty($pipe)) {
       throw new Exception("Unable to open pipe for command '$cmd'");

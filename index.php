@@ -160,6 +160,7 @@ body {
    $(document).ready(function(){$(".backup-files").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });});
    $(document).ready(function(){$(".backup-database").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });});
    $(document).ready(function(){$(".add-db").colorbox({iframe:true, innerWidth:"400px", innerHeight:"350px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });});
+   $(document).ready(function(){$(".add-profile").colorbox({iframe:true, innerWidth:"400px", innerHeight:"600px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "55px" });});
    $(document).ready(function(){$(".edit-db").colorbox({iframe:true, innerWidth:"400px", innerHeight:"350px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "85px" });});
    $(document).ready(function(){$(".update").colorbox({iframe:true, innerWidth:"400px", innerHeight:"70px", closeButton:false, escKey:false, overlayClose:false, scrolling:false, top: "220px" });});
    $(document).ready(function(){$(".settings").colorbox({onOpen: function() {$("#settings-tip").tooltip("disable");},onClosed: function() {$("#tt").tooltip("enable");},iframe:true, innerWidth:"650px",innerHeight:"550px", closeButton:true, escKey:true, overlayClose:true, scrolling:false, top: "35px" });});
@@ -221,9 +222,78 @@ body {
             <h2>Available File Backups <img src="images/hint.png" title="This is the list of file backups that you have available in your Cloud Files account created by Zipit. Use the link below the list to manage these backups." /></h2>
             <center><iframe src="zipit-view-files.php" class="files_frame" frameborder="0" scrolling="auto" name="files-list"></iframe><br/><br/></center>
             <?php echo "<center>Manage your file backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-files-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>";	echo "<br/>"; echo "</center></em><br/>"; ?>
-            <p><center><a class='backup-files' href="zipit-zip-files.php"><button type="button" class="css3button" style="margin-right:15px;">Backup Now</button></a><button type="button" class="css3button" id="refresh-files" onclick="refreshFiles();">Refresh List</button></center></p>
+            
+            <div id="profile_menu" class="profile_menu"><!-- profile menu loads here --></div>
+            <p><center><a id="backup-files" class="backup-files" style="display:none;padding-right:15px;" href=""><button type="button" class="css3button">Backup Now</button></a><span id="delete-profile" class='delete-profile' style="display:none;padding-right:15px;" ><button type="button" class="css3button" onclick="return confirmDeleteProfile();">Delete Profile</button></span><a class='add-profile' style="padding-right:15px;" href="zipit-add-profile.php"><button type="button" class="css3button" onclick="updateProfileMenu();">Add Profile</button></a><button type="button" class="css3button" id="refresh-files" onclick="refreshFiles();">Refresh List</button></center></p>
 
 <script>
+   function showFilesBackupButton() {
+      var val = document.profile_form.profile_select.value; 
+      if (val == "Select Profile for Backup") {
+         document.getElementById("backup-files").style.display="none"; 
+         document.getElementById("delete-profile").style.display="none";
+      }
+      
+      else if (val == "Full-Backup-Default") {
+         document.getElementById("backup-files").style.display="";  
+         document.getElementById("delete-profile").style.display="none";
+      }
+      
+      else {
+         document.getElementById("backup-files").style.display="";  
+         document.getElementById("delete-profile").style.display="";
+      }
+   }
+
+   function display_Profile_Schedule() {
+      var val = document.profile_form_schedule.profile_select_schedule.value; 
+      if (val == "Select Profile for Backup") {
+         document.getElementById("files_continuous").value="No Profile Selected"; 
+         document.getElementById("files_weekly").value="No Profile Selected"; 
+      }
+      else {
+         document.getElementById("files_continuous").value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?>"+val+" auto norotate " +val; 
+         document.getElementById("files_weekly").value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_weekly;?>"+val+" auto weekly " +val; 
+      }
+   }
+
+   function updateProfile(objS) {
+      document.getElementById("backup-files").href = "zipit-zip-files.php?profile=" + objS.options[objS.selectedIndex].value;
+   }
+
+   $(document).ready(function(){
+      $("#profile_menu").load("zipit-profile-menu.php");
+      $("#profile_menu_schedule").load("zipit-profile-menu-schedule.php");
+   });
+
+   function updateProfileMenu() {
+      $("#profile_menu").load("zipit-profile-menu.php");
+      document.getElementById("backup-files").style.display="none"; 
+      document.getElementById("delete-profile").style.display="none";
+   }
+
+   function updateProfileMenuSchedule() {
+      $("#profile_menu_schedule").load("zipit-profile-menu-schedule.php");
+      document.getElementById("files_continuous").value="No Profile Selected"; 
+      document.getElementById("files_weekly").value="No Profile Selected"; 
+   }
+   
+</script>
+<script>
+   function confirmDeleteProfile() {
+      var val = document.profile_form.profile_select.value;
+      if (confirm('Are you sure you want to delete the \"' +val+ '\" profile?\n\nThis can\'t be undone!')) {
+         $.ajax({
+            url: "zipit-delete-profile.php?profile=" +val,
+            type: "POST",
+            data: {id : 5},
+            dataType: "html", 
+            success: function() {
+               updateProfileMenu();
+            }
+         });
+      }
+   }
    function refreshFiles() {
       var ifr = document.getElementsByName('files-list')[0];
       ifr.src = ifr.src;
@@ -238,7 +308,7 @@ body {
             <?php echo "<center>Manage your database backups via the <a href='https://mycloud.rackspace.com/a/$username/files#object-store%2CcloudFiles%2CORD/zipit-backups-databases-$url/' target='_blank'>Cloud Files control panel <img src='images/open_in_new_window.png' /></a>"; echo "<br/>"; echo "</center></em><br/>"; ?>
 
 <script>
-   function showBackupButton() {
+   function showDBBackupButton() {
       var val = document.db_form.db_select.value; 
       if (val == "Select Database to Backup") {
          document.getElementById("backup-database").style.display="none"; 
@@ -305,7 +375,7 @@ body {
          <div class="tabpage" id="tabpage_4" style="display: none;">
             <h2>Scheduler</h2>
             You can easily automate Zipit via a Scheduled Task (cronjob) via the Cloud Sites Control Panel.<br/><br/>Below you will find the "Commands" to use for the Scheduled Task (cronjob).<br/><br/> Be sure to set the "Command Language" to php!  <br/><br/>For more info on setting up a Scheduled Task (cronjob) in Cloud Sites click <a href="http://www.rackspace.com/knowledge_center/article/how-do-i-schedule-a-cron-job-for-cloud-sites" target="_blank">here <img src='images/open_in_new_window.png' /></a>.<br/><br/>
-            <div id="div1" class="alldivs"> <h4>Files Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="files_continuous" name="files_continuous" type="text" id="files_continuous" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?> auto" readonly onClick="SelectAll('files_continuous');"><br/><br/>
+            <div id="div1" class="alldivs"> <div id="profile_menu_schedule" class="profile_menu_schedule"><!-- profile menu loads here --></div><h4>Files Backup Options:</h4><br/>Backup: <img src="images/hint.png" style="width:13px" title="Use this command to create a new backup each time the Scheduled Task (cronjob) runs without any rotation. The backups will continue until the Scheduled Task (cronjob) is deleted." /><br/><input class="files_continuous" name="files_continuous" type="text" id="files_continuous" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_continuous;?> auto" readonly onClick="SelectAll('files_continuous');"><br/><br/>
 Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this command to create a backup for each day of the week and rotate weekly. This will give you a maximum of 7 days of backups for your files. For this to function properly you must setup the Scheduled Task (cronjob) to run once per day. Keep in mind that when the rotation occurs the previous backup for that day will be overwritten and cannot be recovered!" /><br/><input class="files_weekly" name="files_weekly" type="text" id="files_weekly" value="web/content/zipit/zipit-zip-files-worker.php <?php echo $auth_hash.' '.$progress_hash_files_weekly;?> auto weekly" readonly onClick="SelectAll('files_weekly');">
             </div>
 
@@ -404,12 +474,15 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
          refreshFiles();
          updateDbMenu();
          updateDbMenuSchedule();
+         updateProfileMenu();
+         updateProfileMenuSchedule();
       });
    });
 
    $(function () {
       $('.clickFiles').click(function () {
          refreshFiles();
+         updateProfileMenu();
       });
    });
 
@@ -423,6 +496,7 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
    $(function () {
       $('.clickScheduler').click(function () {
          updateDbMenuSchedule();
+         updateProfileMenuSchedule();
       });
    });
 
@@ -439,6 +513,8 @@ Weekly Rotation: <img src="images/hint.png" style="width:13px" title="Use this c
          refreshFiles();
          updateDbMenu();
          updateDbMenuSchedule();
+         updateProfileMenu();
+         updateProfileMenuSchedule();
       });
    });
 </script>
