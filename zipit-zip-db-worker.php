@@ -75,7 +75,7 @@ if ($handle = opendir($dir)) {
       }
       if ($file != "index.php") {
          if ((time() - filemtime($dir.'/'.$file)) > 86400) {
-            sshell_exec("rm $dir/$file");
+            shell_exec("rm $dir/$file");
          }
       }
    }
