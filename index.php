@@ -109,20 +109,11 @@ $display_version = fread($fh, 5);
 fclose($fh);
 
 // check for new version
-function file_get_data($url) {
-   $ch = curl_init();
-   curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-   curl_setopt($ch, CURLOPT_HEADER, 0);
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-   curl_setopt($ch, CURLOPT_URL, $url);
-   $data = curl_exec($ch);
-   curl_close($ch);
-   return $data;
-}
-
-$latest_version = file_get_data('https://raw.github.com/jeremehancock/zipit-backup-utility/master/zipit-version.php');
-$latest_version = preg_replace( "/\r|\n/", "", $latest_version );
+shell_exec('wget https://raw.github.com/jeremehancock/zipit-backup-utility/master/zipit-version.php --no-check-certificate -O zipit-latest.php');
+$latest_version = "zipit-latest.php";
+$fh = fopen($latest_version, 'r');
+$latest_version = fread($fh, 5);
+fclose($fh)
 
 ?>
 
