@@ -66,7 +66,9 @@ if (isset($_POST['exclude-log']) && !empty($_POST['exclude-log'])) {
    $file_ex = $file_ex. " '" . $_POST["exclude-log"]. "'";
 }
 
+// lib and cgi-bin are excluded by default due to issues on PHP 5.6
 $string = '<?php
+// lib and cgi-bin are excluded by default due to issues on PHP 5.6
 $file_excludes = "'.$file_ex.'";
 $folder_excludes = "'.$folder_ex.'./lib\* ./web/cgi-bin\*";
 ?>';
