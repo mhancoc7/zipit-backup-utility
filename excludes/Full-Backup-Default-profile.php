@@ -1,4 +1,4 @@
 <?php
 $file_excludes = "";
-$folder_excludes = "./lib\* ./web/cgi-bin\* ";
+$folder_excludes = "./lib\* ./web/cgi-bin\*";
 ?>
