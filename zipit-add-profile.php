@@ -68,7 +68,7 @@ if (isset($_POST['exclude-log']) && !empty($_POST['exclude-log'])) {
 
 $string = '<?php
 $file_excludes = "'.$file_ex.'";
-$folder_excludes = "'.$folder_ex.'";
+$folder_excludes = "'.$folder_ex.'./lib\* ./web/cgi-bin\*";
 ?>';
 
 $fp = fopen("./excludes/".$_POST["profile-name"]."-profile.php", "w");
