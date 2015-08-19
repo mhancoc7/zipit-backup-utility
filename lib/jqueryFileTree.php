@@ -33,7 +33,7 @@ if( file_exists($root . $_POST['dir']) ) {
 		echo "<ul class=\"jqueryFileTree\" style=\"display: none;\">";
 		// All dirs
 		foreach( $files as $file ) {
-			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && is_dir($root . $_POST['dir'] . $file) ) {
+			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && $file != 'lib' && $file != 'cgi-bin' && is_dir($root . $_POST['dir'] . $file) ) {
 				echo "<li class=\"directory collapsed\"><input type='checkbox' name ='folder[]' id='folder' value=\"" . htmlentities($_POST['dir'] . $file) . "\"/><a href=\"#\" rel=\"" . htmlentities($_POST['dir'] . $file) . "/\">" . htmlentities($file) . "</a></li>";
 			}
 		}
