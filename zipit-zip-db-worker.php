@@ -186,8 +186,16 @@ if (!$db_selected) {
 // set timestamp format for database dump
 $timestamp =  date("M-d-Y-h:i:s");
 
-// No longer will we need to check for mariadump
-shell_exec("mysqldump -h $db_host -u $db_user --password='$db_password' $db_name > db_backup.sql");
+// check for Maria DB and auto variable to ensure cron uses mariadump - This will not be needed once cron is updated.
+if ($auto_check && preg_match('/mariadb/',$db_host)) {
+// dump database
+    shell_exec("mariadump -h $db_host -u $db_user --password='$db_pass' $db_name > $path/zipit/zipit-backups/databases/$db_name-$timestamp.sql");
+}
+
+else {
+// dump database
+    shell_exec("mysqldump -h $db_host -u $db_user --password='$db_pass' $db_name > $path/zipit/zipit-backups/databases/$db_name-$timestamp.sql");
+}
 
 // check to see if the backup was created
 if (file_exists("$path/zipit/zipit-backups/databases/$db_name-$timestamp.sql")) {
