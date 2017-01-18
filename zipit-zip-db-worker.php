@@ -54,10 +54,10 @@ $zipitlog = "../../../logs/zipit.log";
 $logsize = filesize($zipitlog);
 
 // create zipit log file if it doesn't exist
-if (!file_exists("$zipitlog")) { 
-   $fp = fopen("$zipitlog","w");  
-   fwrite($fp,"----Zipit Logs----\n\n");  
-   fclose($fp); 
+if (!file_exists("$zipitlog")) {
+   $fp = fopen("$zipitlog","w");
+   fwrite($fp,"----Zipit Logs----\n\n");
+   fclose($fp);
 }
 
 // rotate log file to keep it from growing too large
@@ -67,7 +67,7 @@ if ($logsize > 52428800) {
 
 // clean up local backups if files are older than 24 hours (86400 seconds)
 $dir = "$path/zipit/zipit-backups/databases";
- 
+
 if ($handle = opendir($dir)) {
    while (( $file = readdir($handle)) !== false ) {
       if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
@@ -84,7 +84,7 @@ if ($handle = opendir($dir)) {
 
 // clean up backup progress files older than 24 hours (86400 seconds)
 $dir = "$path/zipit";
- 
+
 if ($handle = opendir($dir)) {
    while (( $file = readdir($handle)) !== false ) {
       if ( $file == '.' || $file == '..' || is_dir($dir.'/'.$file) ) {
@@ -126,7 +126,7 @@ else {
    fclose($fh);
    if ($auto_check == "auto") {
       echo date("h:i:s")." -- Authorization Failed!\n";
-   } 
+   }
    else {
 // update progress file
       file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Authorization Failed! Click to Close</button></center>');
@@ -156,8 +156,8 @@ else {
 }
 
 // check database connection and database existence
-$link = mysql_connect($db_host,$db_user,$db_pass);
-$db_selected = mysql_select_db($db_name, $link);
+$link = mysqli_connect($db_host,$db_user,$db_pass);
+$db_selected = mysqli_select_db($link, $db_name);
 
 if (!$db_selected) {
 // write to log
@@ -386,16 +386,16 @@ fwrite($fh, $stringData);
 fclose($fh);
 
 if ($auto_check == "auto") {
-   echo date("h:i:s")." -- Creating Cloud Files Container...\n"; 
+   echo date("h:i:s")." -- Creating Cloud Files Container...\n";
 }
 
 else {
 // update progress file
-   file_put_contents($progress_file,'<br/><center>Creating Cloud Files Container...<br/><img src="images/progress.gif"/></center>'); 
+   file_put_contents($progress_file,'<br/><center>Creating Cloud Files Container...<br/><img src="images/progress.gif"/></center>');
 
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
-   sleep(3); 
-} 
+   sleep(3);
+}
 
 // create container if it doesn't already exist
 $cont = $ostore->Container();
@@ -411,7 +411,7 @@ fclose($fh);
 if ($auto_check == "auto") {
    echo date("h:i:s")." -- Cloud Files container created or already exists!\n";
 }
-  
+
 // write to log
 $logtimestamp =  date("M-d-Y-h:i:s");
 $fh = fopen($zipitlog, 'a') or die(file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Can\'t Write to Log! Click to Close</button></center>'));
@@ -426,10 +426,10 @@ if ($auto_check == "auto") {
 else {
 // update progress file
    file_put_contents($progress_file,'<br/><center>Moving Backup to Cloud Files...<br/><img src="images/progress.gif"/></center>');
- 
+
 // sleep for 3 seconds. This helps make the progress more aesthetic for smaller sites where the process would run so fast you couldn't see what happened
-   sleep(3); 
-} 
+   sleep(3);
+}
 
 // send backup to Cloud Files
 $obj = $cont->DataObject();
@@ -467,7 +467,7 @@ if ($md5 != $etag) {
    shell_exec("rm $path/zipit/zipit-backups/databases/$db_name-$timestamp.sql");
    shell_exec("rm $path/zipit/zipit-backups/databases/$backupname");
    shell_exec("rm $progress_file");
-   die();  
+   die();
 }
 
 else {
@@ -485,13 +485,13 @@ else {
 
    else {
    // update progress file
-      file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Backup Complete! Click to Close</button></center>');  
+      file_put_contents($progress_file,'<br/><center><button type="button" name="btnClose" value="OK" class="css3button" onclick="parent.$.colorbox.close();parent.refreshFiles();parent.refreshDb();parent.refreshLogs();">Backup Complete! Click to Close</button></center>');
       sleep(3);
    }
 
 // clean up local backups and progress file
    shell_exec("rm $path/zipit/zipit-backups/databases/$db_name-$timestamp.sql");
-   shell_exec("rm $path/zipit/zipit-backups/databases/$backupname"); 
+   shell_exec("rm $path/zipit/zipit-backups/databases/$backupname");
    shell_exec("rm $progress_file");
 }
 
