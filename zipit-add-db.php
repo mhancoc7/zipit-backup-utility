@@ -7,7 +7,7 @@
 ###############################################################
 
 // include password protection
-require_once("zipit-login.php"); 
+require_once("zipit-login.php");
 
 // require zipit configuration
 require('zipit-config.php');
@@ -96,15 +96,15 @@ else {
 
 if (isset($_POST["Submit"])) {
 // check database connection and database existence
-   $link = mysql_connect($_POST["db_host"],$_POST["db_user"],$_POST["db_pass"]);
-   $db_selected = mysql_select_db($_POST["db_name"], $link);
+   $link = mysqli_connect($_POST["db_host"],$_POST["db_user"],$_POST["db_pass"]);
+   $db_selected = mysqli_select_db($link, $_POST["db_name"]);
    if (!$db_selected) {
       echo '<script>';
       echo 'alert("Database Connection Failed!\n\nCheck credentials and try again.")';
-      echo '</script>'; 
+      echo '</script>';
    }
    else {
-      $string = '<?php 
+      $string = '<?php
 ###############################################################
 # Zipit Backup Utility
 ###############################################################
@@ -126,7 +126,7 @@ $db_host = "'. $_POST["db_host"]. '";
 
    echo '<script>';
    echo 'alert("Database Connection Successfully '.$alert_text.'!\n\nYou may need to refresh the Database Menu.")';
-   echo '</script>'; 
+   echo '</script>';
 
       if ($db_name != $_POST["db_name"]) {
          shell_exec("rm ./dbs/$db_file");
@@ -134,14 +134,14 @@ $db_host = "'. $_POST["db_host"]. '";
 
    echo '<script>';
    echo 'window.location="zipit-add-db.php?db='.$_POST["db_name"].'"';
-   echo '</script>'; 
+   echo '</script>';
    }
 
 }
 
 echo '<script>';
 echo 'parent.updateDbMenu();';
-echo '</script>'; 
+echo '</script>';
 
 ?>
 
@@ -169,23 +169,23 @@ echo '</script>';
 <br/><br />
 <p>
     Database Name:<br />
-    <input name="db_name" type="text" id="db_name" value="<?php if ($wordpress_installed == 'true') {echo DB_NAME;} else {echo $db_name;}?>" onblur="this.value=removeSpaces(this.value);" required> 
+    <input name="db_name" type="text" id="db_name" value="<?php if ($wordpress_installed == 'true') {echo DB_NAME;} else {echo $db_name;}?>" onblur="this.value=removeSpaces(this.value);" required>
 </p>
 <br />
 <p>
      Database User:<br />
-    <input name="db_user" type="text" id="db_user" value="<?php if ($wordpress_installed == 'true') {echo DB_USER;} else {echo $db_user;}?>" onblur="this.value=removeSpaces(this.value);" required> 
+    <input name="db_user" type="text" id="db_user" value="<?php if ($wordpress_installed == 'true') {echo DB_USER;} else {echo $db_user;}?>" onblur="this.value=removeSpaces(this.value);" required>
 </p>
 <br />
 
 <p>
     Database Password:<br />
-    <input name="db_pass" type="password" id="db_pass" value="<?php if ($wordpress_installed == 'true') {echo DB_PASSWORD;} else {echo $db_pass;}?>" onblur="this.value=removeSpaces(this.value);" required> 
+    <input name="db_pass" type="password" id="db_pass" value="<?php if ($wordpress_installed == 'true') {echo DB_PASSWORD;} else {echo $db_pass;}?>" onblur="this.value=removeSpaces(this.value);" required>
 </p>
 <br />
 <p>
     Database Host:<br />
-    <input name="db_host" type="text" id="db_host" value="<?php if ($wordpress_installed == 'true') {echo DB_HOST;} else {echo $db_host;}?>" onblur="this.value=removeSpaces(this.value);" required> 
+    <input name="db_host" type="text" id="db_host" value="<?php if ($wordpress_installed == 'true') {echo DB_HOST;} else {echo $db_host;}?>" onblur="this.value=removeSpaces(this.value);" required>
 </p>
 
 <br />
@@ -202,7 +202,7 @@ echo '</script>';
             url: "zipit-delete-db.php?db=<?php echo $db; ?>",
             type: "POST",
             data: {id : 5},
-            dataType: "html", 
+            dataType: "html",
             success: function() {
                window.location="zipit-add-db.php";
                parent.updateDbMenu();
